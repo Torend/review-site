@@ -70,13 +70,14 @@ module.exports = (app) => {
                 if (doc === null) {
                     res.status(400).send("User does not exist")
                 }else {
-                    if(req.body.username != undefined) // complete
+                    if(req.body.username !== undefined)
                     {
-
                         newDoc.username = (req.body.username);
                     }
-                    // do condition here aswell
-                    newDoc.location = (req.body.location);
+                    if(req.body.location !== undefined)
+                    {
+                        newDoc.location = (req.body.location);
+                    }
                     doc.save(_handleError);
                 }
             });
