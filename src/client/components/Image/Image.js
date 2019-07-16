@@ -52,7 +52,7 @@ const mapStateToProps = (state, props) => {
   return {
     image: state['gallery'].getIn(['images', props.id]),
     id: props.id,
-    size: state['app'].get('size'),
+    size: state['users.js'].get('size'),
     activeFilter: state['gallery'].getIn(['activeFilter', props.id]),
     galleryWidth: state['gallery'].get('galleryWidth')
   }

@@ -40,8 +40,8 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
   return {
-      tag: state['app'].get('tag'),
-      tags: state['app'].get('tags').toArray()
+      tag: state['users.js'].get('tag'),
+      tags: state['users.js'].get('tags').toArray()
   }
 };
 
