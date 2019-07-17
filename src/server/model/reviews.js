@@ -1,15 +1,16 @@
 let mongoose = require('mongoose');
 let Schema = mongoose.Schema;
 
-let reviewssSchema = new Schema({
+let reviewsSchema = new Schema({
     username: String,
-    restaurant: Number,
+    restaurant: String,
     bathroom: Number,
     staff: Number,
     clean: Number,
     drive: Number,
     delivery: Number,
-    food: Number
+    food: Number,
+    pictures: Number
 });
 
-module.exports = mongoose.model('reviews', reviewssSchema);
+module.exports = mongoose.model('reviews', reviewsSchema);
