@@ -12,5 +12,9 @@ export default {
       size: 200,
       tag: 'art',
       tags: List()
+    }),
+    signUp: Map({
+        username: '',
+        location: ''
     })
 };

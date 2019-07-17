@@ -49,7 +49,7 @@ class Gallery extends React.Component {
 const mapStateToProps = (state, props) => {
   return {
     images: state['gallery'].get('images'),
-    size: state['users.js'].get('size'),
+    size: state['gallery'].get('size'),
     activeImage: state['gallery'].get('activeImage'),
     openLightBox: state['gallery'].get('openLightBox'),
     activeFilter: state['gallery'].getIn(['activeFilter', props.idx])
