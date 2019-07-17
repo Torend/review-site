@@ -10,7 +10,7 @@ module.exports = (app) => {
         console.log('users post');
         //console.log(req);
         AppModel
-            .findOne({'username': req.body.username})
+            .findOne({'name': req.body.name})
             .then(doc => {
                 if (doc === null) {
                     let newDoc = new AppModel();

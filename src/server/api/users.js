@@ -99,8 +99,8 @@ module.exports = (app) => {
             });
         next();
     });
-    // to get all reviews
-    app.get('/api/reviews', function(req, res, next) {
+    // to search users
+    app.post('/api/users/search', function(req, res, next) {
         console.log(`users post /${req.params.username}`);
         AppModel
             .findOne({'username': req.params.username})
@@ -112,35 +112,4 @@ module.exports = (app) => {
                 }
             });
     });
-    //to edit reviews
-    app.put('/api/reviews/:reviewId', function(req, res, next) {
-        console.log('users post');
-        AppModel
-            .findOne()
-            .then(doc => {
-                if (doc === null) {
-                    let newDoc = new AppModel();
-                    newDoc.tags.push(req.body.tag);
-                    newDoc.save(_handleError);
-                }else if (!doc.tags.includes(req.body.tag)) {
-                    doc.tags.push(req.body.tag);
-                    doc.save(_handleError);
-                }
-            });
-        next();
-    });
-    // to delete reviews
-    app.delete('/api/reviews/:reviewId', function(req, res, next) {
-        console.log(`users post /${req.params.username}`);
-        AppModel
-            .findOne({'username': req.params.username})
-            .then(doc => {
-                if (doc === null) {
-                    res.status(200).send('The username is valid')
-                }else{
-                    res.status(400).send('The username is invalid')
-                }
-            });
-    });
-
 };

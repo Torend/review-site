@@ -44,7 +44,7 @@ module.exports = (app) => {
         //next();
     });
     // getting all reviews by restaurants
-    app.get('/api/users/reviews/byres/:restaurant', function (req, res, next) {
+    app.get('/api/reviews/byres/:restaurant', function (req, res, next) {
         console.log(`reviews by rest  ${req.params.restaurant}`);
         AppModel
             .find({'restaurant': req.params.restaurant})
@@ -57,7 +57,7 @@ module.exports = (app) => {
             });
     });
     // getting all reviews by username
-    app.get('/api/users/reviews/byuser/:username', function (req, res, next) {
+    app.get('/api/reviews/byuser/:username', function (req, res, next) {
         console.log(`reviews by user  ${req.params.username}`);
         AppModel
             .find({'username': req.params.username})
@@ -71,7 +71,8 @@ module.exports = (app) => {
     });
     // TODO: currently it means that reviews are identified by username ant restaurant name. maybe pass to ObjectId,
     // TODO: this way they're not one-time?
-    app.put('api/users/reviews', function (req, res, next) {
+    //to edit reviews
+    app.put('api/reviews', function (req, res, next) {
         console.log('review post');
         //console.log(req);
         AppModel
@@ -105,5 +106,31 @@ module.exports = (app) => {
                 }
             });
         //next();
+    });
+    // to delete reviews
+    //TODO: handle removal form user & restaurant lists.
+    app.delete('/api/reviews/:reviewId', function(req, res, next) {
+        console.log(`review delete /${req.params.reviewId}`);
+        AppModel
+            .findOne({'_id': req.params.reviewId})
+            .then(doc => {
+                if (doc === null) {
+                    res.status(400).send('Review does not exist.')
+                }else{
+                    UserSchema.findOne({'username': doc.username}).then(userDoc => {
+                        userDoc.reviews.pull(req.params.reviewId); // check if deleted right element
+                        userDoc.save(_handleError);
+                        //userDoc.reviews.filter(req.params.reviewId);
+                    });
+                    //TODO: for restaurant
+                    UserSchema.findOne({'username': doc.username}).then(userDoc => {
+                        userDoc.reviews.pull(req.params.reviewId); // check if deleted right element
+                        userDoc.save(_handleError);
+                        //userDoc.reviews.filter(req.params.reviewId);
+                    });
+                    doc.deleteOne();
+                    res.status(200).send('Deleted.')
+                }
+            });
     });
 };
