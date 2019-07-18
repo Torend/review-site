@@ -10,7 +10,7 @@ let reviewsSchema = new Schema({
     drive: Number,
     delivery: Number,
     food: Number,
-    pictures: Number
+    pictures: [{ data: Buffer, contentType: String }]
 });
 
 module.exports = mongoose.model('reviews', reviewsSchema);

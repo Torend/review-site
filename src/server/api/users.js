@@ -17,6 +17,8 @@ module.exports = (app) => {
                     newDoc.username = (req.body.username);
                     newDoc.location = (req.body.location);
                     newDoc.reviews = ([]);
+                    newDoc.img.data = req.body.img;
+                    newDoc.img.contentType = 'image/png';
                     newDoc.save(_handleError);
                     res.json(newDoc);
                     //res.status(200).send('New user created')
@@ -26,7 +28,7 @@ module.exports = (app) => {
             });
         //next();
     });
-    // for registration
+    // for registration username check
     app.get('/api/users/username/:username', function(req, res, next) {
         console.log(`users ghetto ${req.params.username}`);
         AppModel
@@ -82,24 +84,7 @@ module.exports = (app) => {
                 }
             });
     });
-    //to create reviews
-    app.post('/api/reviews', function(req, res, next) {
-        console.log('users post');
-        AppModel
-            .findOne()
-            .then(doc => {
-                if (doc === null) {
-                    let newDoc = new AppModel();
-                    newDoc.tags.push(req.body.tag);
-                    newDoc.save(_handleError);
-                }else if (!doc.tags.includes(req.body.tag)) {
-                    doc.tags.push(req.body.tag);
-                    doc.save(_handleError);
-                }
-            });
-        next();
-    });
-    // to search users
+    // to search users //TODO: complete using this by filters
     app.post('/api/users/search', function(req, res, next) {
         console.log(`users post /${req.params.username}`);
         AppModel

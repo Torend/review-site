@@ -71,6 +71,7 @@ module.exports = (app) => {
     });
     // TODO: currently it means that reviews are identified by username ant restaurant name. maybe pass to ObjectId,
     // TODO: this way they're not one-time?
+    // TODO: check which content is being changed
     //to edit reviews
     app.put('api/reviews', function (req, res, next) {
         console.log('review post');
@@ -108,7 +109,6 @@ module.exports = (app) => {
         //next();
     });
     // to delete reviews
-    //TODO: handle removal form user & restaurant lists.
     app.delete('/api/reviews/:reviewId', function(req, res, next) {
         console.log(`review delete /${req.params.reviewId}`);
         AppModel
@@ -122,10 +122,9 @@ module.exports = (app) => {
                         userDoc.save(_handleError);
                         //userDoc.reviews.filter(req.params.reviewId);
                     });
-                    //TODO: for restaurant
-                    UserSchema.findOne({'username': doc.username}).then(userDoc => {
-                        userDoc.reviews.pull(req.params.reviewId); // check if deleted right element
-                        userDoc.save(_handleError);
+                    UserSchema.findOne({'name': doc.restaurant}).then(restDoc => {
+                        restDoc.reviews.pull(req.params.reviewId); // check if deleted right element
+                        restDoc.save(_handleError);
                         //userDoc.reviews.filter(req.params.reviewId);
                     });
                     doc.deleteOne();
