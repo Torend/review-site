@@ -17,5 +17,8 @@ export default {
         username: '',
         location: '',
         picture: null
+    }),
+    signIn: Map({
+        username: ''
     })
 };

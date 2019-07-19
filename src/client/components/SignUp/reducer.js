@@ -10,7 +10,7 @@ const SignUpReducer = (state = initialState.signUp, action) => {
         case "onLocationChange":
             return state.set('location', action.value);
         case "onPictureChange":
-            return state.set('picture', action.value);
+            return state.set('picture', URL.createObjectURL(action.value));
         case "onSubmit":
             state.set('username', action.username);
             state.set('location', action.location);
@@ -23,9 +23,12 @@ const SignUpReducer = (state = initialState.signUp, action) => {
         case "onFailureReg":
             console.log("onFailureReg");
             return state;
-        // case SignUpActionsConstants.UpdateUsernameAction:
-        //     console.log("------> ",action.payload.username);
-        //     return state.set('username', action.payload.username);
+        case "valid":
+            console.log(action.value);
+            return state;
+        case "invalid":
+            console.log("invalid");
+            return state;
         default:
             return state; // state is lost
     }

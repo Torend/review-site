@@ -88,6 +88,7 @@ class SignUp extends Component {
                                     id="raised-button-file"
                                     multiple
                                     type="file"
+                                    onChange={this.props.handlePictureChange}
                                 />
                                 <label htmlFor="raised-button-file">
                                     <Button
@@ -95,17 +96,13 @@ class SignUp extends Component {
                                         component="span"
                                         color="primary"
                                         className={classes.button}
-                                        onChange={this.props.handlePictureChange}
                                     >
                                         Upload Picture
                                     </Button>
+                                    <Grid container justify="center" alignItems="center">
+                                        <Avatar alt="Remy Sharp" src={this.props.picture} className={classes.avatar} />
+                                    </Grid>
                                 </label>
-                            </Grid>
-                            <Grid item xs={12}>
-                                <FormControlLabel
-                                    control={<Checkbox value="allowExtraEmails" color="primary"/>}
-                                    label="I want to receive inspiration, marketing promotions and updates via email."
-                                />
                             </Grid>
                         </Grid>
                         <Button
@@ -152,7 +149,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({type: 'onUsernameChange', value: e.target.value})
         },
         handlePictureChange: (e) => {
-            console.log(e.target.files[0])
+            console.log(e.target.files[0]);
             dispatch({type: 'onPictureChange', value: e.target.files[0]})
         },
         onClickSubmitEventHandler: (username, location, picture) => {
