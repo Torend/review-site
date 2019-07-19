@@ -15,6 +15,10 @@ export default {
     }),
     signUp: Map({
         username: '',
-        location: ''
+        location: '',
+        picture: null
+    }),
+    signIn: Map({
+        username: ''
     })
 };

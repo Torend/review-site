@@ -8,7 +8,7 @@ module.exports = (app) => {
     // for user creation
     app.post('/api/users', function(req, res, next) {
         console.log('users bost');
-        //console.log(req);
+        console.log(req.body.username);
         AppModel
             .findOne({'username': req.body.username})
             .then(doc => {
@@ -21,7 +21,7 @@ module.exports = (app) => {
                     newDoc.img.contentType = 'image/png';
                     newDoc.save(_handleError);
                     res.json(newDoc);
-                    //res.status(200).send('New user created')
+                    res.status(200).send('New user created')
                 }else {
                     res.status(400).send('The username is invalid')
                 }
@@ -31,6 +31,7 @@ module.exports = (app) => {
     // for registration username check
     app.get('/api/users/username/:username', function(req, res, next) {
         console.log(`users ghetto ${req.params.username}`);
+        console.log(req.params.username);
         AppModel
             .findOne({'username': req.params.username})
             .then(doc => {

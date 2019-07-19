@@ -41,7 +41,6 @@ export const classes = makeStyles(theme => ({
     },
 }));
 
-
 class SignUp extends Component {
 
     render() {
@@ -50,7 +49,7 @@ class SignUp extends Component {
                 <CssBaseline/>
                 <div className={classes.paper}>
                     <Avatar className={classes.avatar}>
-                        <LockOutlinedIcon />
+                        <LockOutlinedIcon/>
                     </Avatar>
                     <Typography component="h1" variant="h5">
                         Sign up
@@ -66,19 +65,7 @@ class SignUp extends Component {
                                     id="username"
                                     label="Username"
                                     autoFocus
-                                    value={this.props.username}
-                                    onChange={this.handleTextFieldChange}
-                                />
-                            </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    variant="outlined"
-                                    required
-                                    fullWidth
-                                    id="email"
-                                    label="Email Address"
-                                    name="email"
-                                    autoComplete="email"
+                                    onChange={this.props.handleUsernameChange}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -90,14 +77,32 @@ class SignUp extends Component {
                                     label="Location"
                                     type="location"
                                     id="location"
-                                   // inputProps={this.props.location}
+                                    onChange={this.props.handleLocationChange}
                                 />
                             </Grid>
                             <Grid item xs={12}>
-                                <FormControlLabel
-                                    control={<Checkbox value="allowExtraEmails" color="primary"/>}
-                                    label="I want to receive inspiration, marketing promotions and updates via email."
+                                <input
+                                    accept="image/*"
+                                    className={classes.input}
+                                    style={{display: 'none'}}
+                                    id="raised-button-file"
+                                    multiple
+                                    type="file"
+                                    onChange={this.props.handlePictureChange}
                                 />
+                                <label htmlFor="raised-button-file">
+                                    <Button
+                                        variant="raised"
+                                        component="span"
+                                        color="primary"
+                                        className={classes.button}
+                                    >
+                                        Upload Picture
+                                    </Button>
+                                    <Grid container justify="center" alignItems="center">
+                                        <Avatar alt="Remy Sharp" src={this.props.picture} className={classes.avatar} />
+                                    </Grid>
+                                </label>
                             </Grid>
                         </Grid>
                         <Button
@@ -105,7 +110,7 @@ class SignUp extends Component {
                             fullWidth
                             variant="contained"
                             color="primary"
-                            onClick={()=> this.props.onClickSubmitEventHandler(this.props.username, this.props.location)}
+                            onClick={() => this.props.onClickSubmitEventHandler(this.props.username, this.props.location, this.props.picture)}
                             className={classes.submit}
                         >
                             Sign Up
@@ -130,26 +135,25 @@ class SignUp extends Component {
 const mapStateToProps = (state) => {
     return {
         username: state['signUp'].get('username'),
-        location: state['signUp'].get('location')
+        location: state['signUp'].get('location'),
+        picture: state['signUp'].get('picture')
     }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onChangeEventHandler: (username) => {
-
+        handleLocationChange: (e) => {
+            dispatch({type: 'onLocationChange', value: e.target.value})
         },
-        onUpload: () => {
-
+        handleUsernameChange: (e) => {
+            dispatch({type: 'onUsernameChange', value: e.target.value})
         },
-        updateLocationEventHandler: () => {
-
+        handlePictureChange: (e) => {
+            console.log(e.target.files[0]);
+            dispatch({type: 'onPictureChange', value: e.target.files[0]})
         },
-        onClickSubmitEventHandler: (username, location) => {
-
-        },
-        handleTextFieldChange: (e) => {
-            dispatch(SignUpActions.UpdateUsernameAction(e.value))
+        onClickSubmitEventHandler: (username, location, picture) => {
+            dispatch({type: 'onSubmit', username: username, location: location, picture: picture})
         }
     }
 };
