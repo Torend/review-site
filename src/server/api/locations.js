@@ -19,4 +19,15 @@ module.exports = (app) => {
                 }
             });
     });
+
+    // add location
+    app.post('/api/locations', function (req, res, next) {
+        console.log(`locations sent`);
+        AppModel
+            .find()
+            .then(doc => {
+                let newDoc = new AppModel();
+                newDoc.name = (req.body.name);
+            });
+    });
 };

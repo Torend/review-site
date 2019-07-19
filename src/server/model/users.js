@@ -3,7 +3,7 @@ let Schema = mongoose.Schema;
 
 let appSchema = new Schema({
     username: String,
-    location: [Number],
+    location: String,
     reviews: [Schema.Types.ObjectId],
     img: { data: Buffer, contentType: String }
 });
