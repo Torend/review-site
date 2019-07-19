@@ -1,5 +1,6 @@
 import initialState from '../../initialState'
 import {SignUpActionsConstants} from "./constants";
+import {List} from "immutable";
 
 const SignUpReducer = (state = initialState.signUp, action) => {
     console.log('SignUpReducerState=', state);
@@ -29,6 +30,11 @@ const SignUpReducer = (state = initialState.signUp, action) => {
         case "invalid":
             console.log("invalid");
             return state;
+        case "loadLocationSuccess":
+            let res = action.data.map(elm => {
+                return {label: elm, value: elm }
+            });
+            return state.set('locations', new List(res));
         default:
             return state; // state is lost
     }

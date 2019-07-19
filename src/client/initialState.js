@@ -16,6 +16,7 @@ export default {
     signUp: Map({
         username: '',
         location: '',
+        locations: List(),
         picture: null
     }),
     signIn: Map({
