@@ -17,6 +17,8 @@ module.exports = (app) => {
                     newDoc.username = (req.body.username);
                     newDoc.location = (req.body.location);
                     newDoc.reviews = ([]);
+                    newDoc.img.data = req.body.img;
+                    newDoc.img.contentType = 'image/png';
                     newDoc.save(_handleError);
                     res.json(newDoc);
                     res.status(200).send('New user created')
@@ -26,7 +28,7 @@ module.exports = (app) => {
             });
         //next();
     });
-    // for registration
+    // for registration username check
     app.get('/api/users/username/:username', function(req, res, next) {
         console.log(`users ghetto ${req.params.username}`);
         console.log(req.params.username);
@@ -71,36 +73,20 @@ module.exports = (app) => {
                 if (doc === null) {
                     res.status(400).send("User does not exist")
                 }else {
-                    if(req.body.username != undefined) // complete
+                    if(req.body.username !== undefined)
                     {
-
                         newDoc.username = (req.body.username);
                     }
-                    // do condition here aswell
-                    newDoc.location = (req.body.location);
+                    if(req.body.location !== undefined)
+                    {
+                        newDoc.location = (req.body.location);
+                    }
                     doc.save(_handleError);
                 }
             });
     });
-    //to create reviews
-    app.post('/api/reviews', function(req, res, next) {
-        console.log('users post');
-        AppModel
-            .findOne()
-            .then(doc => {
-                if (doc === null) {
-                    let newDoc = new AppModel();
-                    newDoc.tags.push(req.body.tag);
-                    newDoc.save(_handleError);
-                }else if (!doc.tags.includes(req.body.tag)) {
-                    doc.tags.push(req.body.tag);
-                    doc.save(_handleError);
-                }
-            });
-        next();
-    });
-    // to get all reviews
-    app.get('/api/reviews', function(req, res, next) {
+    // to search users //TODO: complete using this by filters
+    app.post('/api/users/search', function(req, res, next) {
         console.log(`users post /${req.params.username}`);
         AppModel
             .findOne({'username': req.params.username})
@@ -112,35 +98,4 @@ module.exports = (app) => {
                 }
             });
     });
-    //to edit reviews
-    app.put('/api/reviews/:reviewId', function(req, res, next) {
-        console.log('users post');
-        AppModel
-            .findOne()
-            .then(doc => {
-                if (doc === null) {
-                    let newDoc = new AppModel();
-                    newDoc.tags.push(req.body.tag);
-                    newDoc.save(_handleError);
-                }else if (!doc.tags.includes(req.body.tag)) {
-                    doc.tags.push(req.body.tag);
-                    doc.save(_handleError);
-                }
-            });
-        next();
-    });
-    // to delete reviews
-    app.delete('/api/reviews/:reviewId', function(req, res, next) {
-        console.log(`users post /${req.params.username}`);
-        AppModel
-            .findOne({'username': req.params.username})
-            .then(doc => {
-                if (doc === null) {
-                    res.status(200).send('The username is valid')
-                }else{
-                    res.status(400).send('The username is invalid')
-                }
-            });
-    });
-
 };
