@@ -19,6 +19,7 @@ module.exports = (app) => {
                     newDoc.reviews = ([]);
                     newDoc.save(_handleError);
                     res.json(newDoc);
+                    res.end();
                     //res.status(200).send('New restaurant created')
                 } else {
                     res.status(400).send('The restaurant is invalid')

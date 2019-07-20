@@ -29,6 +29,9 @@ module.exports = (app) => {
             .then(doc => {
                 let newDoc = new AppModel();
                 newDoc.name = (req.body.name);
+                newDoc.save(_handleError);
+                res.json(newDoc);
+                res.end();
             });
     });
 };

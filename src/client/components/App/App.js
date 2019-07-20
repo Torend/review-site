@@ -7,7 +7,7 @@ import GalleryActions from '../Gallery/actions';
 import {Button} from 'primereact/button';
 import {Dropdown} from 'primereact/dropdown';
 import SignUp from "../SignUp/SignUp";
-import SignIn from "../SignIn/SignIn";
+//import SignIn from "../SignIn/SignIn";
 
 class App extends React.Component {
     componentDidMount() {
@@ -56,7 +56,6 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(AppActions.updateTagAction(e.value));
         },
         loadImagesEventHandler: (tag) => {
-            console.log("fuckers");
             dispatch(GalleryActions.loadImagesAction(tag))
         }
     }
