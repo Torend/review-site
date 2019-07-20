@@ -7,7 +7,7 @@ import GalleryActions from '../Gallery/actions';
 import {Button} from 'primereact/button';
 import {Dropdown} from 'primereact/dropdown';
 import SignUp from "../SignUp/SignUp";
-//import SignIn from "../SignIn/SignIn";
+import {LoginPage} from "../SignIn/SignIn";
 
 class App extends React.Component {
     componentDidMount() {
@@ -19,21 +19,9 @@ class App extends React.Component {
         return (
             <div className="app-root">
                 <div className="app-header">
-                    <h2>Flickr Gallery</h2>
-                    <Dropdown
-                        value={this.props.tag}
-                        onChange={this.props.updateTagEventHandler}
-                        options={this.props.tags}
-                        placeholder="insert a tag"
-                        editable={true}
-                    />
-                    <Button
-                        label="Search"
-                        className="p-button-raised p-button-rounded"
-                        onClick={() => this.props.loadImagesEventHandler(this.props.tag)}
-                    />
                 </div>
                 <SignUp/>
+                <LoginPage/>
             </div>
         );
     }

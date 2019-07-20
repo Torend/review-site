@@ -1,72 +1,99 @@
-import {AppActionsConstants, SignUpActionsConstants} from './constants'
-import { call, put, takeEvery } from 'redux-saga/effects'
-import AppActions from './actions'
+import { authHeader } from './helper';
 
-function* regUser(action){
-    console.log('SignInSaga=', action);
-    try {
-        alert(JSON.stringify(action.payload));
-        const res = yield call(fetch, action.uri,
-            {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(action.payload)
-            });
-        const json = yield call([res, 'json']); //retrieve body of response
-        yield put({type: "onSuccessReg"});
-    } catch (e) {
-        alert(e.message);
-        console.debug(e.message);
-        yield put({type: "onFailureReg", message:(e.message)});
-    }
+export const userService = {
+    login,
+    logout,
+    register,
+    getAll,
+    getById,
+    update,
+    delete: _delete
+};
+
+function login(username, password) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ username, password })
+    };
+
+    return fetch(`/users/authenticate`, requestOptions)
+        .then(handleResponse)
+        .then(user => {
+            // store user details and jwt token in local storage to keep user logged in between page refreshes
+            localStorage.setItem('user', JSON.stringify(user));
+
+            return user;
+        });
 }
 
-function* usernameChange(action){
-    console.log('SignInSaga=', action);
-    try {
-        const res = yield call(fetch, '/api/users/username/:username',
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                params: JSON.stringify({
-                    username: action.value,
-                })
-            });
-        const json = yield call([res, 'json']); //retrieve body of response
-        yield put({type: "valid", value: json});
-    } catch (e) {
-        yield put({type: "invalid", message:(e.message)});
-    }
+function logout() {
+    // remove user from local storage to log user out
+    localStorage.removeItem('user');
 }
 
-function* loadLocations(action){
-    console.log('SignUpSaga=', action);
-    try {
-        const res = yield call(fetch, '/api/locations',
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-            });
+function getAll() {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
 
-        const json = yield call([res, 'json']); //retrieve body of response
-        yield put({type: "loadLocationSuccess", data: json});
-    } catch (e) {
-        yield put({type: "invalid", message:(e.message)});
-    }
+    return fetch(`/users`, requestOptions).then(handleResponse);
 }
 
+function getById(id) {
+    const requestOptions = {
+        method: 'GET',
+        headers: authHeader()
+    };
 
-function* SignUpSaga() {
-    //using takeEvery, you take the action away from reducer to saga
-    yield takeEvery(SignUpActionsConstants.REGISTRATION, regUser);
-    yield takeEvery("onUsernameChange", usernameChange);
-    yield takeEvery("LoadLocations", loadLocations);
+    return fetch(`/users/${id}`, requestOptions).then(handleResponse);
 }
 
-export default SignUpSaga;
+function register(user) {
+    const requestOptions = {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(user)
+    };
+
+    return fetch(`/users/register`, requestOptions).then(handleResponse);
+}
+
+function update(user) {
+    const requestOptions = {
+        method: 'PUT',
+        headers: { ...authHeader(), 'Content-Type': 'application/json' },
+        body: JSON.stringify(user)
+    };
+
+    return fetch(`/users/${user.id}`, requestOptions).then(handleResponse);
+}
+
+// prefixed function name with underscore because delete is a reserved word in javascript
+function _delete(id) {
+    const requestOptions = {
+        method: 'DELETE',
+        headers: authHeader()
+    };
+
+    return fetch(`/users/${id}`, requestOptions).then(handleResponse);
+}
+
+function handleResponse(response) {
+    return response.text().then(text => {
+        const data = text && JSON.parse(text);
+        if (!response.ok) {
+            if (response.status === 401) {
+                // auto logout if 401 response returned from api
+                logout();
+                location.reload(true);
+            }
+
+            const error = (data && data.message) || response.statusText;
+            return Promise.reject(error);
+        }
+
+        return data;
+    });
+}
