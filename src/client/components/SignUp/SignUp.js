@@ -13,8 +13,8 @@ import Typography from '@material-ui/core/Typography';
 import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
-import SignUpActions from "./actions";
-import {Dropdown} from "primereact/components/dropdown/Dropdown";
+import SignUpActions from "../SignUp/actions";
+import {Dropdown} from "primereact/dropdown";
 
 
 export const classes = makeStyles(theme => ({
@@ -155,7 +155,10 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({type: 'onPictureChange', value: e.target.files[0]})
         },
         onClickSubmitEventHandler: (username, location, picture) => {
-            dispatch({type: 'onSubmit', username: username, location: location, picture: picture})
+            console.log("fucker");
+            alert("Hello! I am an alert box!!");
+            dispatch(SignUpActions.Register(username, location, picture))
+            //dispatch({type: 'onSubmit', username: username, location: location, picture: picture})
         },
         loadLocationsEvent:() =>{
             dispatch({type: 'LoadLocations'})

@@ -56,6 +56,7 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(AppActions.updateTagAction(e.value));
         },
         loadImagesEventHandler: (tag) => {
+            console.log("fuckers");
             dispatch(GalleryActions.loadImagesAction(tag))
         }
     }
