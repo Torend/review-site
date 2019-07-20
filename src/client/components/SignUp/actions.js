@@ -1,4 +1,5 @@
 import {SignUpActionsConstants} from './constants.js';
+//import {GalleryActionsConstants} from "../Gallery/constants";
 
 function UpdateUsernameAction(username) {
     return {
@@ -10,8 +11,22 @@ function UpdateUsernameAction(username) {
 }
 
 
+function Register(username, location, picture) {
+    alert("mada");
+    return {
+        type: SignUpActionsConstants.REGISTRATION,
+        uri: '/api/users',
+        payload: {
+            username,
+            location,
+            picture
+        }
+    }
+}
+
 let SignUpActions = {
-    UpdateUsernameAction
+    UpdateUsernameAction,
+    Register
 };
 
 export default SignUpActions

@@ -1,5 +1,6 @@
 const SignUpActionsConstants = {
-    UpdateUsernameAction: "UpdateUsernameAction"
+    UpdateUsernameAction: "UpdateUsernameAction",
+    REGISTRATION: "REGISTRATION"
 };
 
 export { SignUpActionsConstants };

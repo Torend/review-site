@@ -59,6 +59,7 @@ const mapStateToProps = (state, props) => {
 const mapDispatchToProps = (dispatch) => {
   return {
     loadImagesEventHandler: (images) => {
+      console.log("BEEP");
       dispatch(GalleryActions.loadImagesAction(images))
     },
     cloneEventHandler: (idx) => {
