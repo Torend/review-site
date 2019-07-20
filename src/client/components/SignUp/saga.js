@@ -25,7 +25,6 @@ function* regUser(action){
 
 function* usernameChange(action){
     console.log('SignUpSaga=', action);
-    console.log("------>", action.value);
     try {
         const res = yield call(fetch, '/api/users/username/:username',
             {
@@ -44,10 +43,30 @@ function* usernameChange(action){
     }
 }
 
+function* loadLocations(action){
+    console.log('SignUpSaga=', action);
+    try {
+        const res = yield call(fetch, '/api/locations',
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+            });
+
+        const json = yield call([res, 'json']); //retrieve body of response
+        yield put({type: "loadLocationSuccess", data: json});
+    } catch (e) {
+        yield put({type: "invalid", message:(e.message)});
+    }
+}
+
+
 function* SignUpSaga() {
     //using takeEvery, you take the action away from reducer to saga
     yield takeEvery(SignUpActionsConstants.REGISTRATION, regUser);
     yield takeEvery("onUsernameChange", usernameChange);
+    yield takeEvery("LoadLocations", loadLocations);
 }
 
 export default SignUpSaga;

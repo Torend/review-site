@@ -14,6 +14,7 @@ import {makeStyles} from '@material-ui/core/styles';
 import Container from '@material-ui/core/Container';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import SignUpActions from "../SignUp/actions";
+import {Dropdown} from "primereact/dropdown";
 
 
 export const classes = makeStyles(theme => ({
@@ -43,6 +44,10 @@ export const classes = makeStyles(theme => ({
 
 class SignUp extends Component {
 
+    componentDidMount() {
+        this.props.loadLocationsEvent();
+    }
+
     render() {
         return (
             <Container component="main" maxWidth="xs">
@@ -68,16 +73,13 @@ class SignUp extends Component {
                                     onChange={this.props.handleUsernameChange}
                                 />
                             </Grid>
-                            <Grid item xs={12}>
-                                <TextField
-                                    variant="outlined"
-                                    required
-                                    fullWidth
-                                    name="location"
-                                    label="Location"
-                                    type="location"
-                                    id="location"
+                            <Grid item xs={20}>
+                                <Dropdown //change later
+                                    value={this.props.location}
                                     onChange={this.props.handleLocationChange}
+                                    options={this.props.locations}
+                                    placeholder="insert location"
+                                    editable={true}
                                 />
                             </Grid>
                             <Grid item xs={12}>
@@ -157,6 +159,9 @@ const mapDispatchToProps = (dispatch) => {
             alert("Hello! I am an alert box!!");
             dispatch(SignUpActions.Register(username, location, picture))
             //dispatch({type: 'onSubmit', username: username, location: location, picture: picture})
+        },
+        loadLocationsEvent:() =>{
+            dispatch({type: 'LoadLocations'})
         }
     }
 };
