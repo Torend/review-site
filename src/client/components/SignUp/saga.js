@@ -55,6 +55,7 @@ function* loadLocations(action){
             });
 
         const json = yield call([res, 'json']); //retrieve body of response
+        alert( JSON.stringify(json));
         yield put({type: "loadLocationSuccess", data: json});
     } catch (e) {
         yield put({type: "invalid", message:(e.message)});

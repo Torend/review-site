@@ -16,7 +16,9 @@ module.exports = (app) => {
                     res.status(400).send('No locations.')
                 } else {
                     console.log(doc);
-                    res.status(200).send(doc)
+                    res.json(doc);
+                    res.end();
+                    //res.status(200).send(doc)
                 }
             });
     });
