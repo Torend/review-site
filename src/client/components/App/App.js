@@ -7,7 +7,7 @@ import GalleryActions from '../Gallery/actions';
 import {Button} from 'primereact/button';
 import {Dropdown} from 'primereact/dropdown';
 import SignUp from "../SignUp/SignUp";
-import {LoginPage} from "../SignIn/SignIn";
+import SignIn from "../SignIn/SignIn";
 
 class App extends React.Component {
     componentDidMount() {
@@ -21,7 +21,7 @@ class App extends React.Component {
                 <div className="app-header">
                 </div>
                 <SignUp/>
-                <LoginPage/>
+                <SignIn/>
             </div>
         );
     }

@@ -1,100 +1,54 @@
-import { authHeader } from './helper';
+import {AppActionsConstants, SignInActionsConstants} from './constants'
+import { call, put, takeEvery } from 'redux-saga/effects'
+import AppActions from './actions'
 
-export const userService = {
-    login,
-    logout,
-    register,
-    getAll,
-    getById,
-    update,
-    delete: _delete
-};
-
-function login(username) {
-    alert("FUKU");
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username })
-    };
-
-    return fetch(`/users/authenticate`, requestOptions)
-        .then(handleResponse)
-        .then(user => {
-            // store user details and jwt token in local storage to keep user logged in between page refreshes
-            localStorage.setItem('user', JSON.stringify(user));
-
-            return user;
-        });
+function* login(action){
+    console.log('SignInSaga=', action);
+    alert(action.uri);
+    try {
+        const res = yield call(fetch, action.uri,
+            {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(action.payload)
+            });
+        const json = yield call([res, 'json']); //retrieve body of response
+        yield put({type: "onSuccessReg"});
+    } catch (e) {
+        alert(e.message);
+        console.debug(e.message);
+        yield put({type: "onFailureReg", message:(e.message)});
+    }
 }
 
-function logout() {
-    // remove user from local storage to log user out
-    localStorage.removeItem('user');
+function* usernameChange(action){
+    console.log('SignUpSaga=', action);
+    try {
+        const res = yield call(fetch, '/api/users/username/:username',
+            {
+                method: 'GET',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                params: JSON.stringify({
+                    username: action.value,
+                })
+            });
+        const json = yield call([res, 'json']); //retrieve body of response
+        yield put({type: "valid", value: json});
+    } catch (e) {
+        yield put({type: "invalid", message:(e.message)});
+    }
 }
 
-function getAll() {
-    const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
-    };
 
-    return fetch(`/users`, requestOptions).then(handleResponse);
+
+function* SignInSaga() {
+    //using takeEvery, you take the action away from reducer to saga
+    yield takeEvery(SignInActionsConstants.LOGIN, login);
+    yield takeEvery("onUsernameChange", usernameChange);
 }
 
-function getById(id) {
-    const requestOptions = {
-        method: 'GET',
-        headers: authHeader()
-    };
-
-    return fetch(`/users/${id}`, requestOptions).then(handleResponse);
-}
-
-function register(user) {
-    const requestOptions = {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(user)
-    };
-
-    return fetch(`/users/register`, requestOptions).then(handleResponse);
-}
-
-function update(user) {
-    const requestOptions = {
-        method: 'PUT',
-        headers: { ...authHeader(), 'Content-Type': 'application/json' },
-        body: JSON.stringify(user)
-    };
-
-    return fetch(`/users/${user.id}`, requestOptions).then(handleResponse);
-}
-
-// prefixed function name with underscore because delete is a reserved word in javascript
-function _delete(id) {
-    const requestOptions = {
-        method: 'DELETE',
-        headers: authHeader()
-    };
-
-    return fetch(`/users/${id}`, requestOptions).then(handleResponse);
-}
-
-function handleResponse(response) {
-    return response.text().then(text => {
-        const data = text && JSON.parse(text);
-        if (!response.ok) {
-            if (response.status === 401) {
-                // auto logout if 401 response returned from api
-                logout();
-                location.reload(true);
-            }
-
-            const error = (data && data.message) || response.statusText;
-            return Promise.reject(error);
-        }
-
-        return data;
-    });
-}
+export default SignInSaga;
