@@ -21,7 +21,7 @@ module.exports = (app) => {
                     newDoc.img.contentType = 'image/png';
                     newDoc.save(_handleError);
                     res.json(newDoc);
-                    res.end();
+                    //res.end();
                     //res.status(200).send('New user created')
                 }else {
                     res.status(400).send('The username is invalid')

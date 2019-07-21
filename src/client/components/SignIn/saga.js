@@ -10,11 +10,12 @@ export const userService = {
     delete: _delete
 };
 
-function login(username, password) {
+function login(username) {
+    alert("FUKU");
     const requestOptions = {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ username, password })
+        body: JSON.stringify({ username })
     };
 
     return fetch(`/users/authenticate`, requestOptions)

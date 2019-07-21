@@ -138,7 +138,8 @@ const mapStateToProps = (state) => {
     return {
         username: state['signUp'].get('username'),
         location: state['signUp'].get('location'),
-        picture: state['signUp'].get('picture')
+        picture: state['signUp'].get('picture'),
+        locations: state['signUp'].get('locations')
     }
 };
 

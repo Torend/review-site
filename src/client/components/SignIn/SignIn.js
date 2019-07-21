@@ -27,16 +27,15 @@ class LoginPage extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-
         this.setState({ submitted: true });
-        const { username, password } = this.state;
-        if (username && password) {
-            this.props.login(username, password);
+        const { username } = this.state;
+        if (username) {
+            this.props.login(username);
         }
     }
 
     render() {
-        const { username, password, submitted } = this.state;
+        const { username, submitted } = this.state;
         return (
             <div className="col-md-6 col-md-offset-3">
                 <h2>Login</h2>
