@@ -1,4 +1,4 @@
-const { List, Map } = require('immutable');
+const {List, Map} = require('immutable');
 
 export default {
     gallery: Map({
@@ -9,9 +9,9 @@ export default {
         galleryWidth: 0
     }),
     app: Map({
-      size: 200,
-      tag: 'art',
-      tags: List()
+        size: 200,
+        tag: 'art',
+        tags: List()
     }),
     signUp: Map({
         username: '',
@@ -21,5 +21,16 @@ export default {
     }),
     signIn: Map({
         username: ''
+    }),
+    // restaurant: Map({
+    //     name: '',
+    //     location: '',
+    //     description: '',
+    //     picture: null,
+    //     reviews: List()
+    // }),
+    viewRestaurant:Map({
+        restaurants: List(),
+        sortBy:''
     })
 };
