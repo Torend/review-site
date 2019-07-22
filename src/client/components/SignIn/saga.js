@@ -1,6 +1,8 @@
 import {AppActionsConstants, SignInActionsConstants} from './constants'
 import { call, put, takeEvery } from 'redux-saga/effects'
 import AppActions from './actions'
+import axios from 'axios';
+
 
 function* login(action){
     console.log('SignInSaga=', action);
@@ -15,8 +17,12 @@ function* login(action){
                 body: JSON.stringify(action.payload)
             });
         const json = yield call([res, 'json']); //retrieve body of response
+        //const { token } = res.data;
+        //localStorage.setItem('jwtToken', token);
+        //axios.defaults.headers.common['Authorization'] = token;
         yield put({type: "onSuccessReg"});
     } catch (e) {
+        //delete axios.defaults.headers.common['Authorization'];
         alert(e.message);
         console.debug(e.message);
         yield put({type: "onFailureReg", message:(e.message)});
