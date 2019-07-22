@@ -2,45 +2,12 @@ import React from 'react';
 import {connect} from 'react-redux';
 import Restaurant from "../Restaurant/Restaurant";
 import Typography from "@material-ui/core/Typography";
-import ListItemText from "@material-ui/core/ListItemText";
-import Avatar from "@material-ui/core/Avatar";
 import ListItem from "@material-ui/core/ListItem";
-import ListItemAvatar from "@material-ui/core/ListItemAvatar";
 import List from "@material-ui/core/List";
-import Divider from "@material-ui/core/Divider";
-import MaterialTable from 'material-table';
-import {DataView} from "primereact/dataview";
-import Image from "../Image";
+import {Toolbar} from "primereact/toolbar";
+import {Button} from "primereact/button";
 
-const review ={
-    name: "Toren",
-    date: "12.3.2019",
-    desc: "bla bla bla bla bla bla",
-    average:3,
-    r1: 4,
-    r2: 2,
-    r3: 4,
-    r4: 5,
-    r5: 3,
-    r6: 4,
-};
 
-const data = [{
-    name: "Mcdonalds",
-    location: "tel Aviv",
-    description: "McDonald's is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald",
-    reviews:[review ,review, review]
-}, {
-    name: "Mcdonalds",
-    location: "beerSheva",
-    description: "McDonald's is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald",
-    reviews: [review, review]
-},{
-    name: "Mcdonalds",
-    location: "ramtGan",
-    description: "McDonald's is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald",
-    reviews: [review]
-}];
 
 
 class ViewRestaurant extends React.Component {
@@ -52,9 +19,21 @@ class ViewRestaurant extends React.Component {
         return (
             <div>
                 <List>
+                    <Toolbar>
+                        <div className="p-toolbar-group-left">
+                            <Button label="By Score" icon="pi pi-sort" style={{marginRight: '.25em'}}
+                                    onClick={this.props.sortByScore}/>
+                            <Button label="BY Location" icon="pi pi-sort" className="p-button-success"
+                                    onClick={this.props.sortByLocation}/>
+                            <Button label="Save" icon="pi pi-sort" className="p-button-warning"/>
+                        </div>
+                        <div className="p-toolbar-group-right">
+                            <Button icon="pi pi-search" style={{marginRight: '.25em'}}/>
+                        </div>
+                    </Toolbar>
                     <ListItem alignItems="flex-start">
                         <Typography>
-                            {data.map((restaurant,id) => {
+                            {this.props.restaurants.map((restaurant, id) => {
                                 return <Restaurant
                                     key={id}
                                     name={restaurant.name}
@@ -73,13 +52,21 @@ class ViewRestaurant extends React.Component {
 
 
 const mapStateToProps = (state) => {
-    return {}
+    return {
+        restaurants: state['viewRestaurant'].get('restaurants')
+    }
 };
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        loadRestaurantEvent:()=>{
-            dispatch({type :"loadRestaurantEvent"});
+        loadRestaurantEvent: () => {
+            dispatch({type: "loadRestaurantEvent"});
+        },
+        sortByScore: () => {
+            dispatch({type: "sortByScore"});
+        },
+        sortByLocation: () => {
+            dispatch({type: "sortByLocation"});
         }
     }
 };
