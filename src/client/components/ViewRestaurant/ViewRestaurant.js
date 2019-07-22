@@ -23,9 +23,9 @@ class ViewRestaurant extends React.Component {
                         <div className="p-toolbar-group-left">
                             <Button label="By Score" icon="pi pi-sort" style={{marginRight: '.25em'}}
                                     onClick={this.props.sortByScore}/>
-                            <Button label="BY Location" icon="pi pi-sort" className="p-button-success"
-                                    onClick={this.props.sortByLocation}/>
-                            <Button label="Save" icon="pi pi-sort" className="p-button-warning"/>
+                            <Button label="By Date" icon="pi pi-sort" className="p-button-success"
+                                    onClick={this.props.sortByDate}/>
+                            <Button label="By Location" icon="pi pi-sort" className="p-button-warning"/>
                         </div>
                         <div className="p-toolbar-group-right">
                             <Button icon="pi pi-search" style={{marginRight: '.25em'}}/>
@@ -39,6 +39,8 @@ class ViewRestaurant extends React.Component {
                                     name={restaurant.name}
                                     location={restaurant.location}
                                     description={restaurant.description}
+                                    date={restaurant.date}
+                                    picture={restaurant.picture}
                                     reviews={restaurant.reviews}
                                 />;
                             })}
@@ -65,8 +67,14 @@ const mapDispatchToProps = (dispatch) => {
         sortByScore: () => {
             dispatch({type: "sortByScore"});
         },
-        sortByLocation: () => {
-            dispatch({type: "sortByLocation"});
+        sortByDate: () => {
+            dispatch({type: "sortByDate"});
+        },
+        sortReviewsByScore: () =>{
+
+        },
+        sortReviewsByDate: () =>{
+
         }
     }
 };

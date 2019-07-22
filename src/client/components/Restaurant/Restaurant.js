@@ -19,6 +19,9 @@ import Review from "../Reivew/Review";
 import {ListItemAvatar} from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
+import ViewRestaurant from "../ViewRestaurant/ViewRestaurant";
+import Gallery from "../Gallery/Gallery";
+import {Toolbar} from "primereact/components/toolbar/Toolbar";
 
 const classes = makeStyles(theme => ({
     card: {
@@ -82,12 +85,21 @@ class Restaurant extends React.Component {
     render() {
         const footer = (
             <div>
-                <Button label="Yes" icon="pi pi-check" onClick={this.onHide}/>
-                <Button label="No" icon="pi pi-times" onClick={this.onHide} className="p-button-secondary"/>
+                <Toolbar>
+                    <div className="p-toolbar-group-right">
+                        <Button label="By Score" icon="pi pi-sort" style={{marginRight: '.25em'}}
+                                onClick={this.props.sortReviewsByScore}/>
+                        <Button label="By Date" icon="pi pi-sort" className="p-button-success"
+                                onClick={this.props.sortReviewsByDate}/>
+                        <Button label="Add" icon="pi pi-pencil" onClick={this.onHide}/>
+                    </div>
+                </Toolbar>
+
             </div>
         );
         return (
             <Card className={classes.card}>
+                {this.props.date}
                 <CardHeader
                     avatar={
                         <Avatar aria-label="Recipe" className={classes.avatar}>
@@ -104,7 +116,8 @@ class Restaurant extends React.Component {
                 />
                 <CardMedia
                     className={classes.media}
-                    image={this.props.img}
+                    image={this.props.picture}
+
                 />
                 <CardContent>
                     <Typography variant="body2" color="textSecondary" component="p">
@@ -118,18 +131,21 @@ class Restaurant extends React.Component {
                             </div>
                         </div>
                         <div className="content-section implementation">
-                            <Dialog header={this.props.name + " Reviews"} visible={this.state.visible}
-                                    style={{width: '50vw'}} footer={footer} onHide={this.onHide} maximizable>
-                                <List>
+                            <Dialog
+                                footer={footer}
+                                visible={this.state.visible}
+                                contentStyle={{maxHeight: "800px", width: "400px", overflow:"auto"}}
+                                modal={true}
+                                maximizable={true}
+                                onHide={this.onHide}>
                                 {this.props.reviews.map((review, id) => {
-                                    return <ListItem>
+                                    return <List>
                                         <Review
                                         key={id}
                                         value={review}
                                     />
-                                    </ListItem>
+                                    </List>
                                 })}
-                                </List>
                             </Dialog>
                             <Button label="Reviews" icon="pi pi-external-link" onClick={this.onClick}/>
                         </div>

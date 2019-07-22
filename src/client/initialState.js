@@ -43,16 +43,22 @@ const data = [{
     name: "Mcdonalds",
     location: "tel Aviv",
     description: "McDonald's is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald",
-    reviews: [review3, review1, review2]
+    date: "12.12.2013",
+    picture: null,
+    reviews: [review3, review1, review2, review2, review1]
 }, {
     name: "Mcdonalds",
     location: "beerSheva",
     description: "McDonald's is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald",
+    date: "1.1.2011",
+    picture: null,
     reviews: [review2, review1, review2]
 }, {
     name: "Mcdonalds",
     location: "ramtGan",
     description: "McDonald's is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald",
+    date: "3.1.2013",
+    picture: null,
     reviews: [review1]
 }];
 
@@ -87,5 +93,6 @@ export default {
     // }),
     viewRestaurant:Map({
         restaurants: List(data),
+        sort: 'default'
     })
 };

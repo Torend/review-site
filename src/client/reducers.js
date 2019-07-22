@@ -4,7 +4,7 @@ import AppReducer from './components/App/reducer';
 import SignUpReducer from "./components/SignUp/reducer";
 import SignInReducer from "./components/SignIn/reducer";
 import RestaurantReducer from "./components/Restaurant/reducer";
-import ViewRestaurantReducer from "./components/ViewRestaurant/resucer";
+import ViewRestaurantReducer from "./components/ViewRestaurant/reducer";
 
 
 export default combineReducers({
