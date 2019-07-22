@@ -25,7 +25,7 @@ class Gallery extends React.Component {
     return (
       <div className="gallery-root">
         {this.props.images.map((dto, idx) => {
-          return <Image
+        return <Image
             key={'image-' + dto.id + idx}
             id={idx}
             dto={dto}

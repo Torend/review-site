@@ -8,6 +8,10 @@ import {Button} from 'primereact/button';
 import {Dropdown} from 'primereact/dropdown';
 import SignUp from "../SignUp/SignUp";
 import SignIn from "../SignIn/SignIn";
+import Restaurant from "../Restaurant/Restaurant";
+import ViewRestaurant from "../ViewRestaurant/ViewRestaurant";
+import Review from "../Reivew/Review";
+
 
 class App extends React.Component {
     componentDidMount() {
@@ -22,6 +26,7 @@ class App extends React.Component {
                 </div>
                 <SignUp/>
                 <SignIn/>
+                <ViewRestaurant/>
             </div>
         );
     }

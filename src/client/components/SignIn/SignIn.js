@@ -107,6 +107,9 @@ const mapDispatchToProps = (dispatch) => {
         },
         loadLocationsEvent:() =>{
             dispatch({type: 'LoadLocations'})
+        },
+        handleUsernameChange: (e) => {
+            dispatch({type: 'onUsernameChange', value: e.target.value})
         }
     }
 };
