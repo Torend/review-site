@@ -54,7 +54,6 @@ class Restaurant extends React.Component {
         this.state = {visible: false};
         this.onClick = this.onClick.bind(this);
         this.onHide = this.onHide.bind(this);
-        this.itemTemplate = this.itemTemplate.bind(this);
     }
 
     onClick() {
@@ -65,22 +64,6 @@ class Restaurant extends React.Component {
         this.setState({visible: false});
     }
 
-    itemTemplate(car, layout) {
-        if (layout === 'list') {
-            return (
-                <div className="p-grid">
-                    <div>{"car.brand"}</div>
-                </div>
-            );
-        }
-        if (layout === 'grid') {
-            return (
-                <div className="p-col-12 p-md-3">
-                    <div>{"car.brand"}</div>
-                </div>
-            );
-        }
-    }
 
     render() {
         const footer = (
@@ -88,9 +71,11 @@ class Restaurant extends React.Component {
                 <Toolbar>
                     <div className="p-toolbar-group-right">
                         <Button label="By Score" icon="pi pi-sort" style={{marginRight: '.25em'}}
-                                onClick={this.props.sortReviewsByScore}/>
+                                //onClick={this.props.sortReviewsByScore(this.props.name)}
+                        />
                         <Button label="By Date" icon="pi pi-sort" className="p-button-success"
-                                onClick={this.props.sortReviewsByDate}/>
+                                //onClick={this.props.sortReviewsByDate(this.props.name)}
+                        />
                         <Button label="Add" icon="pi pi-pencil" onClick={this.onHide}/>
                     </div>
                 </Toolbar>
@@ -134,16 +119,16 @@ class Restaurant extends React.Component {
                             <Dialog
                                 footer={footer}
                                 visible={this.state.visible}
-                                contentStyle={{maxHeight: "800px", width: "400px", overflow:"auto"}}
+                                contentStyle={{maxHeight: "800px", width: "400px", overflow: "auto"}}
                                 modal={true}
                                 maximizable={true}
                                 onHide={this.onHide}>
                                 {this.props.reviews.map((review, id) => {
                                     return <List>
                                         <Review
-                                        key={id}
-                                        value={review}
-                                    />
+                                            key={id}
+                                            value={review}
+                                        />
                                     </List>
                                 })}
                             </Dialog>
@@ -163,11 +148,25 @@ class Restaurant extends React.Component {
 
 
 const mapStateToProps = (state) => {
-    return {}
+    return {
+        // name: props.name,
+        // location: props.location,
+        // description: props.description,
+        // date: props.date,
+        // picture: props.picture,
+        // reviews: props.reviews
+    }
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        // sortReviewsByScore: (restaurantName) =>{
+        //     dispatch({type: "sortReviewsByScore", restaurantName});
+        // },
+        // sortReviewsByDate: (restaurantName) =>{
+        //     dispatch({type: "sortReviewByDate", restaurantName});
+        // }
+    }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Restaurant);
