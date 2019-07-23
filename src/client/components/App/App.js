@@ -24,8 +24,8 @@ class App extends React.Component {
             <div className="app-root">
                 <div className="app-header">
                 </div>
-                <SignUp/>
-                <SignIn/>
+                {/*<SignUp/>*/}
+                {/*<SignIn/>*/}
                 <ViewRestaurant/>
             </div>
         );
@@ -54,4 +54,5 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
+//export default App
 export default connect(mapStateToProps, mapDispatchToProps)(App);

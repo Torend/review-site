@@ -17,6 +17,7 @@ function* login(action){
                 body: JSON.stringify(action.payload)
             });
         const json = yield call([res, 'json']); //retrieve body of response
+        localStorage.setItem('username', json.username);
         //const { token } = res.data;
         //localStorage.setItem('jwtToken', token);
         //axios.defaults.headers.common['Authorization'] = token;
