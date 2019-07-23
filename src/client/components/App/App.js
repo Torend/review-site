@@ -11,6 +11,7 @@ import SignIn from "../SignIn/SignIn";
 import Restaurant from "../Restaurant/Restaurant";
 import ViewRestaurant from "../ViewRestaurant/ViewRestaurant";
 import Review from "../Reivew/Review";
+import { Redirect, Link, Route, Switch } from "react-router-dom";
 
 
 class App extends React.Component {
@@ -24,9 +25,20 @@ class App extends React.Component {
             <div className="app-root">
                 <div className="app-header">
                 </div>
-                {/*<SignUp/>*/}
+
+                <nav className="navbar navbar">
+                    <ul className="nav">
+                        <li>
+                            <Link to="/SignUp">SignUp</Link>
+                        </li>
+                    </ul>
+                </nav>
+                <Switch>
+                    <Route exact path="/SignIn" component={SignIn} />
+                    <Route exact path="/SignUp" component={SignUp} />
+                </Switch>
                 {/*<SignIn/>*/}
-                <ViewRestaurant/>
+                {/*<ViewRestaurant/>*/}
             </div>
         );
     }

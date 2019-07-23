@@ -15,6 +15,7 @@ import Container from '@material-ui/core/Container';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import SignUpActions from "../SignUp/actions";
 import {Dropdown} from "primereact/dropdown";
+import { Redirect, Link as Linker, Route, Switch } from "react-router-dom";
 
 
 export const classes = makeStyles(theme => ({
@@ -119,9 +120,7 @@ class SignUp extends Component {
                         </Button>
                         <Grid container justify="flex-end">
                             <Grid item>
-                                <Link href="#" variant="body2">
-                                    Already have an account? Sign in
-                                </Link>
+                                <Linker to="/SignIn">Already have an account? Sign in</Linker>
                             </Grid>
                         </Grid>
                     </form>
