@@ -31,13 +31,16 @@ const SignUpReducer = (state = initialState.signUp, action) => {
             console.log("invalid");
             return state;
         case "loadLocationSuccess":
-            var count = Object.keys(elm).length;
-            let li = new List();
-            let res = action.data.map(elm => {
+            //alert("fooks");
+            //alert(action.value);
+            //var count = Object.keys(value).length;
+            let res = action.value.map(elm => {
                 return {label: elm.name, value: elm.name }
             });
-
-            return state.set('locations', new List(res));
+            console.log(res);
+            state = state.set('locations', res);
+            console.log(state, state.get('locations'));
+            return state;
         default:
             return state; // state is lost
     }
