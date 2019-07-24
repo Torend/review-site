@@ -15,7 +15,7 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import {connect} from "react-redux";
 import {Dialog} from "primereact/dialog";
 import {Button} from "primereact/button";
-import Review from "../Reivew/Review";
+import Review from "../Review/Review";
 import {ListItemAvatar} from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";

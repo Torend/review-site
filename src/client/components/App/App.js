@@ -10,7 +10,7 @@ import SignUp from "../SignUp/SignUp";
 import SignIn from "../SignIn/SignIn";
 import Restaurant from "../Restaurant/Restaurant";
 import ViewRestaurant from "../ViewRestaurant/ViewRestaurant";
-import Review from "../Reivew/Review";
+import Review from "../Review/Review";
 import { Redirect, Link, Route, Switch } from "react-router-dom";
 
 
