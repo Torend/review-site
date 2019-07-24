@@ -11,6 +11,7 @@ import SignIn from "../SignIn/SignIn";
 import Restaurant from "../Restaurant/Restaurant";
 import ViewRestaurant from "../ViewRestaurant/ViewRestaurant";
 import Review from "../Reivew/Review";
+import CreateRestaurant from "../CreateRestaurant/CreateRestaurant";
 
 
 class App extends React.Component {

@@ -96,19 +96,19 @@ export default {
     signIn: Map({
         username: ''
     }),
-    // restaurant: Map({
-    //     name: '',
-    //     location: '',
-    //     description: '',
-    //     picture: null,
-    //     reviews: List()
-    // }),
-    viewRestaurant:Map({
+    viewRestaurant: Map({
         restaurants: List(data),
         searchValue: '',
         sort: 'default',
         backup: List(data),
         locations: cities,
         searchLocationValue: ''
-    })
+    }),
+    createRestaurant: Map({
+        name: '',
+        description: '',
+        location: '',
+        locations: cities,
+        picture: null
+    }),
 };

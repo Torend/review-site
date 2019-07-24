@@ -5,6 +5,7 @@ import SignUpReducer from "./components/SignUp/reducer";
 import SignInReducer from "./components/SignIn/reducer";
 import RestaurantReducer from "./components/Restaurant/reducer";
 import ViewRestaurantReducer from "./components/ViewRestaurant/reducer";
+import CreateRestaurantReducer from "./components/CreateRestaurant/reducer";
 
 
 export default combineReducers({
@@ -12,5 +13,6 @@ export default combineReducers({
   gallery: GalleryReducer,
   signUp: SignUpReducer,
   signIn: SignInReducer,
-  viewRestaurant: ViewRestaurantReducer
+  viewRestaurant: ViewRestaurantReducer,
+  CreateRestaurant: CreateRestaurantReducer
 });
