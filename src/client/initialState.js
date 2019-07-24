@@ -41,26 +41,38 @@ const review3 = {
 
 const data = [{
     name: "Mcdonalds",
-    location: "tel Aviv",
+    location: "Tel Aviv",
     description: "McDonald's is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald",
-    date: "12.12.2013",
     picture: null,
     reviews: [review3, review1, review2, review2, review1]
 }, {
     name: "Mcdonalds",
-    location: "beerSheva",
+    location: "BeerSheva",
     description: "McDonald's is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald",
-    date: "1.1.2011",
     picture: null,
     reviews: [review2, review1, review2]
 }, {
     name: "Mcdonalds",
-    location: "ramtGan",
+    location: "RamtGan",
     description: "McDonald's is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald",
-    date: "3.1.2013",
+    picture: null,
+    reviews: [review1]
+}, {
+    name: "aaaa",
+    location: "RamtGan",
+    description: "McDonald's is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald",
     picture: null,
     reviews: [review1]
 }];
+
+const cities =  [
+    {name: 'RamtGan'},
+    {name: 'Rome'},
+    {name: 'Tel Aviv'},
+    {name: 'BeerSheva'},
+    {name: 'Istanbul'},
+    {name: 'Paris'}];
+
 
 export default {
     gallery: Map({
@@ -99,6 +111,10 @@ export default {
     // }),
     viewRestaurant:Map({
         restaurants: List(data),
-        sort: 'default'
+        searchValue: '',
+        sort: 'default',
+        backup: List(data),
+        locations: cities,
+        searchLocationValue: ''
     })
 };

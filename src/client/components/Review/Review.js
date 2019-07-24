@@ -42,7 +42,7 @@ class Review extends React.Component {
                         <Typography component="legend">Average Rating</Typography>
                         <Rating value={this.props.value.average} readOnly/>
                     </Box>
-                    <Dialog header={this.props.name + " Rating"} visible={this.state.visible}
+                    <Dialog header={this.props.value.name + " Rating"} visible={this.state.visible}
                             style={{width: '50vw'}} onHide={this.onHide} maximizable>
                         <Box component="fieldset" width={1 / 8} mb={0} borderColor="transparent">
                             <Typography component="legend">Bathroom Quality</Typography>

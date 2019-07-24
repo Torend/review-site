@@ -6,16 +6,24 @@ import ListItem from "@material-ui/core/ListItem";
 import List from "@material-ui/core/List";
 import {Toolbar} from "primereact/toolbar";
 import {Button} from "primereact/button";
-
-
+import {InputText} from "primereact/inputtext";
+import {AutoComplete} from "primereact/autocomplete";
+import {Dropdown} from "primereact/dropdown";
+import NativeSelect from "@material-ui/core/NativeSelect";
+import InputLabel from "@material-ui/core/InputLabel";
+import FormControl from "@material-ui/core/FormControl";
+import Select from "@material-ui/core/Select";
+import MenuItem from "@material-ui/core/MenuItem";
 
 
 class ViewRestaurant extends React.Component {
     componentDidMount() {
         this.props.loadRestaurantEvent();
+        this.props.LoadLocations();
     }
 
     render() {
+
         return (
             <div>
                 <List>
@@ -23,12 +31,13 @@ class ViewRestaurant extends React.Component {
                         <div className="p-toolbar-group-left">
                             <Button label="By Score" icon="pi pi-sort" style={{marginRight: '.25em'}}
                                     onClick={this.props.sortByScore}/>
-                            <Button label="By Date" icon="pi pi-sort" className="p-button-success"
-                                    onClick={this.props.sortByDate}/>
                             <Button label="By Location" icon="pi pi-sort" className="p-button-warning"/>
                         </div>
                         <div className="p-toolbar-group-right">
-                            <Button icon="pi pi-search" style={{marginRight: '.25em'}}/>
+                            <label htmlFor="in">Search By Name </label>
+                            <InputText id="in" value={this.props.searchValue} style={{marginRight: '.25em'}} onChange={this.props.filterByName}/>
+                            <Dropdown optionLabel="name" value={this.props.location} options={this.props.locations} onChange={this.props.filterByLocation}
+                                      editable={true} placeholder="Select a City"/>
                         </div>
                     </Toolbar>
                     <ListItem alignItems="flex-start">
@@ -39,7 +48,6 @@ class ViewRestaurant extends React.Component {
                                     name={restaurant.name}
                                     location={restaurant.location}
                                     description={restaurant.description}
-                                    date={restaurant.date}
                                     picture={restaurant.picture}
                                     reviews={restaurant.reviews}
                                 />;
@@ -55,7 +63,8 @@ class ViewRestaurant extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        restaurants: state['viewRestaurant'].get('restaurants')
+        restaurants: state['viewRestaurant'].get('restaurants'),
+        locations: state["viewRestaurant"].get("locations")
     }
 };
 
@@ -64,18 +73,18 @@ const mapDispatchToProps = (dispatch) => {
         loadRestaurantEvent: () => {
             dispatch({type: "loadRestaurantEvent"});
         },
+        LoadLocations: () => {
+            dispatch({type: "LoadLocationsEvent"});
+        },
         sortByScore: () => {
             dispatch({type: "sortByScore"});
         },
-        sortByDate: () => {
-            dispatch({type: "sortByDate"});
+        filterByName: (e) => {
+            dispatch({type: "filterByName", value: e.target.value});
         },
-        sortReviewsByScore: () =>{
-
+        filterByLocation: (e) => {
+            dispatch({type: "filterByLocation", value: e.target.value});
         },
-        sortReviewsByDate: () =>{
-
-        }
     }
 };
 
