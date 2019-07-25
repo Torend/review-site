@@ -61,12 +61,14 @@ class CreateReview extends React.Component {
         return (
             <Card className={classes.card}>
                 <Button
-                    className={'p-button-danger'}
-                    label="submit"
-                    icon="pi pi-pencil"
-                    //onClick={()=>{console.log("WTFFFF")}}
-                    onClick={this.props.onClickSubmitCrateReview(this.props.username, this.props.name, this.state.r1, this.state.r2, this.state.r3,
-                        this.state.r4, this.state.r5, this.state.r6, this.state.picture)} //need to check how to pass the username
+                    type="submit"
+                    fullWidth
+                    variant="contained"
+                    color="primary"
+                    onClick={() => this.props.onClickSubmitCrateReview(this.props.username, this.props.name, this.state.r1, this.state.r2, this.state.r3,
+                        this.state.r4, this.state.r5, this.state.r6, this.state.picture)}
+                    className={classes.submit}
+                    //onClick={} //need to check how to pass the username
                 />
                 <Box component="fieldset" width={1 / 5} mb={0} borderColor="transparent">
                     <Typography component="legend">Bathroom Quality</Typography>
