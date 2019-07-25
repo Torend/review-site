@@ -5,7 +5,6 @@ import AppActions from './actions'
 function* regUser(action){
     console.log('SignUpSaga=', action);
     try {
-        alert(JSON.stringify(action.payload));
         const res = yield call(fetch, action.uri,
             {
                 method: 'POST',
@@ -55,7 +54,7 @@ function* loadLocations(action){
             });
 
         const json = yield call([res, 'json']); //retrieve body of response
-        yield put({type: "loadLocationSuccess", data: json});
+        yield put({type: "loadLocationSuccess", value: json});
     } catch (e) {
         yield put({type: "invalid", message:(e.message)});
     }

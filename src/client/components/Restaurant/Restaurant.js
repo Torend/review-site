@@ -15,13 +15,18 @@ import MoreVertIcon from '@material-ui/icons/MoreVert';
 import {connect} from "react-redux";
 import {Dialog} from "primereact/dialog";
 import {Button} from "primereact/button";
-import Review from "../Reivew/Review";
+import Review from "../Review/Review";
 import {ListItemAvatar} from "@material-ui/core";
 import List from "@material-ui/core/List";
 import ListItem from "@material-ui/core/ListItem";
 import ViewRestaurant from "../ViewRestaurant/ViewRestaurant";
 import Gallery from "../Gallery/Gallery";
 import {Toolbar} from "primereact/components/toolbar/Toolbar";
+import Box from "@material-ui/core/Box";
+import TextField from "@material-ui/core/TextField";
+import Grid from "@material-ui/core/Grid";
+import {Rating} from "primereact/rating";
+import CreateReview from "../CreateReview/CreateReview";
 
 const classes = makeStyles(theme => ({
     card: {
@@ -42,19 +47,28 @@ const classes = makeStyles(theme => ({
         transform: 'rotate(180deg)',
     },
     avatar: {
-        backgroundColor: red[500],
+        margin: theme.spacing(1),
+        backgroundColor: theme.palette.secondary.main,
+    },
+    body: {
+        backgroundColor: theme.palette.common.white,
     },
 }));
 
 
 class Restaurant extends React.Component {
-
     constructor() {
         super();
-        this.state = {visible: false};
+        this.state = {
+            visible: false,
+            visible2: false,
+        };
         this.onClick = this.onClick.bind(this);
         this.onHide = this.onHide.bind(this);
+        this.onClick2 = this.onClick2.bind(this);
+        this.onHide2 = this.onHide2.bind(this);
     }
+
 
     onClick() {
         this.setState({visible: true});
@@ -64,6 +78,14 @@ class Restaurant extends React.Component {
         this.setState({visible: false});
     }
 
+    onClick2() {
+        this.setState({visible2: true});
+    }
+
+    onHide2() {
+        this.setState({visible2: false});
+    }
+
 
     render() {
         const footer = (
@@ -71,15 +93,14 @@ class Restaurant extends React.Component {
                 <Toolbar>
                     <div className="p-toolbar-group-right">
                         <Button label="By Score" icon="pi pi-sort" style={{marginRight: '.25em'}}
-                                //onClick={this.props.sortReviewsByScore(this.props.name)}
+                            //onClick={this.props.sortReviewsByScore(this.props.name)}
                         />
                         <Button label="By Date" icon="pi pi-sort" className="p-button-success"
-                                //onClick={this.props.sortReviewsByDate(this.props.name)}
+                            //onClick={this.props.sortReviewsByDate(this.props.name)}
                         />
                         <Button label="Add" icon="pi pi-pencil" onClick={this.onHide}/>
                     </div>
                 </Toolbar>
-
             </div>
         );
         return (
@@ -138,6 +159,27 @@ class Restaurant extends React.Component {
                     <IconButton aria-label="Share">
                         <ShareIcon/>
                     </IconButton>
+                    <Dialog visible={this.state.visible2}
+                            style={{width: '60vw'}} onHide={this.onHide2} maximizable>
+                        <CreateReview
+                            username={this.props.username}
+                            name={this.props.name}
+                            r1={null}
+                            r2={null}
+                            r3={null}
+                            r4={null}
+                            r5={null}
+                            r6={null}
+                            picture={null}
+                        />
+                    </Dialog>
+                    <Button
+                        className={'p-button-danger'}
+                        label="Add Review"
+                        icon="pi pi-pencil"
+                        onClick={this.onClick2}
+                        style={{marginRight: '.25em'}}
+                    />
                 </CardActions>
                 <Collapse timeout="auto" unmountOnExit>
                 </Collapse>
@@ -148,25 +190,11 @@ class Restaurant extends React.Component {
 
 
 const mapStateToProps = (state) => {
-    return {
-        // name: props.name,
-        // location: props.location,
-        // description: props.description,
-        // date: props.date,
-        // picture: props.picture,
-        // reviews: props.reviews
-    }
+    return {}
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        // sortReviewsByScore: (restaurantName) =>{
-        //     dispatch({type: "sortReviewsByScore", restaurantName});
-        // },
-        // sortReviewsByDate: (restaurantName) =>{
-        //     dispatch({type: "sortReviewByDate", restaurantName});
-        // }
-    }
+    return {}
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Restaurant);

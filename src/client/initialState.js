@@ -66,12 +66,15 @@ const data = [{
 }];
 
 const cities =  [
-    {name: 'RamtGan'},
-    {name: 'Rome'},
-    {name: 'Tel Aviv'},
-    {name: 'BeerSheva'},
-    {name: 'Istanbul'},
-    {name: 'Paris'}];
+    { label: 'none', value: 'none' },
+    { label: 'New York', value: 'NY' },
+    { label: 'Rome', value: 'RM' },
+    { label: 'London', value: 'LDN' },
+    { label: 'Istanbul', value: 'IST' },
+    { label: 'Paris', value: 'PRS' },
+    { label: 'Tel Aviv', value: 'Tel Aviv' },
+    { label: 'BeerSheva', value: 'BeerSheva' },
+    { label: 'RamtGan', value: 'RamtGan' }];
 
 
 export default {
@@ -90,7 +93,13 @@ export default {
     signUp: Map({
         username: '',
         location: '',
-        locations: List(),
+        locations: [
+            { label: 'New York', value: 'NY' },
+            { label: 'Rome', value: 'RM' },
+            { label: 'London', value: 'LDN' },
+            { label: 'Istanbul', value: 'IST' },
+            { label: 'Paris', value: 'PRS' }
+        ],
         picture: null
     }),
     signIn: Map({

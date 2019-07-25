@@ -10,8 +10,9 @@ import SignUp from "../SignUp/SignUp";
 import SignIn from "../SignIn/SignIn";
 import Restaurant from "../Restaurant/Restaurant";
 import ViewRestaurant from "../ViewRestaurant/ViewRestaurant";
-import Review from "../Reivew/Review";
-import CreateRestaurant from "../CreateRestaurant/CreateRestaurant";
+import {Redirect, Link, Route, Switch} from "react-router-dom";
+import CreateReview from "../CreateReview/CreateReview";
+import CardActions from "@material-ui/core/CardActions";
 
 
 class App extends React.Component {
@@ -23,7 +24,25 @@ class App extends React.Component {
         console.log('tags=', this.props.tags);
         return (
             <div className="app-root">
+                <div className="app-header">
+                </div>
+
+                <nav className="navbar navbar">
+                    <ul className="nav">
+                        <li>
+                            <Link to="/SignUp">SignUp</Link>
+                        </li>
+                    </ul>
+                </nav>
+                <Switch>
+                    <Route exact path="/SignIn" component={SignIn}/>
+                    <Route exact path="/SignUp" component={SignUp}/>
+                </Switch>
                 <ViewRestaurant/>
+                {/*<CreateReview*/}
+                {/*    username={this.props.username}*/}
+                {/*    name={this.props.name}*/}
+                {/*/>*/}
             </div>
         );
     }
@@ -46,10 +65,10 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(AppActions.updateTagAction(e.value));
         },
         loadImagesEventHandler: (tag) => {
-            console.log("fuckers");
             dispatch(GalleryActions.loadImagesAction(tag))
         }
     }
 };
 
+//export default App
 export default connect(mapStateToProps, mapDispatchToProps)(App);

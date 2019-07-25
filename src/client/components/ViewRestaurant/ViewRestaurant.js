@@ -36,10 +36,13 @@ class ViewRestaurant extends React.Component {
                         <div className="p-toolbar-group-right">
                             <label htmlFor="in">Search By Name </label>
                             <InputText id="in" value={this.props.searchValue} style={{marginRight: '.25em'}} onChange={this.props.filterByName}/>
-                            <Dropdown optionLabel="name" value={this.props.location}
-                                      options={this.props.locations}
-                                      onChange={this.props.filterByLocation}
-                                      placeholder="Select a City"/>
+                            <Dropdown
+                                value={this.props.location}
+                                options={this.props.locations}
+                                onChange={this.props.filterByLocation}
+                                editable={true}
+                                placeholder="Select a City"
+                            />
                         </div>
                     </Toolbar>
                     <ListItem alignItems="flex-start">
@@ -87,6 +90,7 @@ const mapDispatchToProps = (dispatch) => {
         filterByLocation: (e) => {
             dispatch({type: "filterByLocation", value: e.target.value});
         },
+
     }
 };
 

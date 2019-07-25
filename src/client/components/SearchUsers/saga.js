@@ -1,10 +1,10 @@
-import {AppActionsConstants, SignInActionsConstants} from './constants'
+import {AppActionsConstants, SearchUsersActionsConstants} from './constants'
 import { call, put, takeEvery } from 'redux-saga/effects'
 import AppActions from './actions'
 import axios from 'axios';
 
 
-function* login(action){
+function* searchUsers(action){ //todo: change to fit search users
     console.log('SignInSaga=', action);
     alert(action.uri);
     try {
@@ -30,32 +30,10 @@ function* login(action){
     }
 }
 
-function* usernameChange(action){
-    console.log('SignUpSaga=', action);
-    try {
-        const res = yield call(fetch, '/api/users/username/:username',
-            {
-                method: 'GET',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                params: JSON.stringify({
-                    username: action.value,
-                })
-            });
-        const json = yield call([res, 'json']); //retrieve body of response
-        yield put({type: "valid", value: json});
-    } catch (e) {
-        yield put({type: "invalid", message:(e.message)});
-    }
-}
 
-
-
-function* SignInSaga() {
+function* SearchUsersSaga() {
     //using takeEvery, you take the action away from reducer to saga
-    yield takeEvery(SignInActionsConstants.LOGIN, login);
-    yield takeEvery("onUsernameChange", usernameChange);
+    yield takeEvery(SearchUsersActionsConstants.SEARCH, searchUsers);
 }
 
-export default SignInSaga;
+export default SearchUsersSaga;

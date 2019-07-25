@@ -4,9 +4,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -15,6 +12,7 @@ import Container from '@material-ui/core/Container';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import SignUpActions from "../SignUp/actions";
 import {Dropdown} from "primereact/dropdown";
+import { Redirect, Link as Linker, Route, Switch } from "react-router-dom";
 
 
 export const classes = makeStyles(theme => ({
@@ -119,9 +117,7 @@ class SignUp extends Component {
                         </Button>
                         <Grid container justify="flex-end">
                             <Grid item>
-                                <Link href="#" variant="body2">
-                                    Already have an account? Sign in
-                                </Link>
+                                <Linker to="/SignIn">Already have an account? Sign in</Linker>
                             </Grid>
                         </Grid>
                     </form>
@@ -138,7 +134,8 @@ const mapStateToProps = (state) => {
     return {
         username: state['signUp'].get('username'),
         location: state['signUp'].get('location'),
-        picture: state['signUp'].get('picture')
+        picture: state['signUp'].get('picture'),
+        locations: state['signUp'].get('locations')
     }
 };
 
@@ -155,8 +152,8 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({type: 'onPictureChange', value: e.target.files[0]})
         },
         onClickSubmitEventHandler: (username, location, picture) => {
-            console.log("fucker");
-            alert("Hello! I am an alert box!!");
+            //console.log("fucker");
+            //alert("Hello! I am an alert box!!");
             dispatch(SignUpActions.Register(username, location, picture))
             //dispatch({type: 'onSubmit', username: username, location: location, picture: picture})
         },

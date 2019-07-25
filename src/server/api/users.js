@@ -21,7 +21,8 @@ module.exports = (app) => {
                     newDoc.img.contentType = 'image/png';
                     newDoc.save(_handleError);
                     res.json(newDoc);
-                    res.status(200).send('New user created')
+                    //res.end();
+                    //res.status(200).send('New user created')
                 }else {
                     res.status(400).send('The username is invalid')
                 }
@@ -87,15 +88,32 @@ module.exports = (app) => {
     });
     // to search users //TODO: complete using this by filters
     app.post('/api/users/search', function(req, res, next) {
-        console.log(`users post /${req.params.username}`);
+        console.log(`users post /${req.body.username}`);
         AppModel
-            .findOne({'username': req.params.username})
+            .findOne({'username': req.body.username})
             .then(doc => {
                 if (doc === null) {
-                    res.status(200).send('The username is valid')
-                }else{
                     res.status(400).send('The username is invalid')
+                }else{
+                    res.status(200).send('The username is valid')
                 }
+            });
+    });
+
+    app.post('/api/users/authenticate', function(req, res, next) {
+        console.log("HYA");
+        AppModel
+            .findOne({'username': req.body.username})
+            .then(doc => {
+                if (doc === null) {
+                    console.log(req.body.username);
+                    res.status(400).send('The username is invalid');
+
+                }else{
+                    console.log(doc);
+                    res.json(doc);
+                }
+
             });
     });
 };

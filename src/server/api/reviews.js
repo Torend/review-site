@@ -36,7 +36,8 @@ module.exports = (app) => {
                         restaurantDoc.save(_handleError);
                     });
                     res.json(newDoc);
-                    //res.status(200).send('New restaurant created')
+                    res.end();
+                    res.status(200).send('New restaurant created')
                 } else {
                     res.status(400).send('You already reviewed the restaurant.')
                 }
@@ -52,7 +53,8 @@ module.exports = (app) => {
                 if (doc === null) {
                     res.status(400).send('No reviews for this restaurant.')
                 } else {
-                    res.json(doc)
+                    res.json(doc);
+                    res.end();
                 }
             });
     });
@@ -65,7 +67,8 @@ module.exports = (app) => {
                 if (doc === null) {
                     res.status(400).send('No reviews for this username.')
                 } else {
-                    res.json(doc)
+                    res.json(doc);
+                    res.end();
                 }
             });
     });
@@ -101,6 +104,7 @@ module.exports = (app) => {
                         restaurantDoc.save(_handleError);
                     });
                     res.json(newDoc);
+                    res.end();
                     //res.status(200).send('New restaurant created')
                 } else {
                     res.status(400).send('You did not review the restaurant.')

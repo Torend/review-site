@@ -42,7 +42,7 @@ export const classes = makeStyles(theme => ({
     },
 }));
 
-class SignIn extends Component {
+class SearchUsers extends Component {
 
     componentDidMount() {
         //this.props.loadLocationsEvent();
@@ -114,4 +114,4 @@ const mapDispatchToProps = (dispatch) => {
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignIn);
+export default connect(mapStateToProps, mapDispatchToProps)(SearchUsers);

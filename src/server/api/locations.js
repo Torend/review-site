@@ -8,15 +8,17 @@ module.exports = (app) => {
 
     // get all locations
     app.get('/api/locations', function (req, res, next) {
-        console.log(`locations sent`);
+        //console.log(`locations sent`);
         AppModel
             .find()
             .then(doc => {
                 if (doc === null) {
                     res.status(400).send('No locations.')
                 } else {
-                    console.log(doc);
-                    res.status(200).send(doc)
+                    //console.log(doc);
+                    res.json(doc);
+                    res.end();
+                    //res.status(200).send(doc)
                 }
             });
     });
@@ -29,6 +31,9 @@ module.exports = (app) => {
             .then(doc => {
                 let newDoc = new AppModel();
                 newDoc.name = (req.body.name);
+                newDoc.save(_handleError);
+                res.json(newDoc);
+                res.end();
             });
     });
 };

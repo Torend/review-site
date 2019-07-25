@@ -12,7 +12,6 @@ function UpdateUsernameAction(username) {
 
 
 function Register(username, location, picture) {
-    alert("mada");
     return {
         type: SignUpActionsConstants.REGISTRATION,
         uri: '/api/users',

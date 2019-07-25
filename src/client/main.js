@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './components/App/index';
+import App from './components/App/App';
+import SignIn from './components/SignIn/SignIn'
+import { BrowserRouter, Route } from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
@@ -25,10 +27,20 @@ sagaMiddleware.run(Sagas);
 
 // Render the main component into the dom
 
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <App />
+//   </Provider>,
+//   document.getElementById('app'));
+
+
 ReactDOM.render(
-  <Provider store={store}>
-    <App />
-  </Provider>,
-  document.getElementById('app'));
+        <Provider store={store}>
+            <BrowserRouter>
+                <App />
+            </BrowserRouter>
+        </Provider>,
+    document.getElementById('app')
+);
 
 

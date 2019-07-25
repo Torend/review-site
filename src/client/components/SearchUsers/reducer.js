@@ -1,9 +1,9 @@
 import initialState from '../../initialState'
-import {SignInActionsConstants} from "./constants";
+import {SearchUsersActionsConstants} from "./constants";
 import {List} from "immutable";
 
-const SignInReducer = (state = initialState.signIn, action) => {
-    console.log('SignInReducerState=', state);
+const SearchUsersReducer = (state = initialState.signIn, action) => {
+    console.log('SearchUsersReducerState=', state);
     console.log('RECEIVED ACTION:', action);
     switch (action.type) {
         case "onUsernameChange":
