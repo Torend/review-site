@@ -1,10 +1,12 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
+import CreateRestaurantActions from "./actions";
 
 
 function* createRestaurant(action){
     console.log('CreateRestaurantSaga=', action);
+    console.log(action.payload);
     try {
-        alert(JSON.stringify(action.payload));
+        //alert(JSON.stringify(action.payload));
         const res = yield call(fetch, action.uri,
             {
                 method: 'POST',
@@ -14,11 +16,11 @@ function* createRestaurant(action){
                 body: JSON.stringify(action.payload)
             });
         const json = yield call([res, 'json']); //retrieve body of response
-        yield put({type: "onSuccessReg"});
+        yield put({type: "onSuccessRestaurantReg"});
     } catch (e) {
-        alert(e.message);
+        //alert(e.message);
         console.debug(e.message);
-        yield put({type: "onFailureReg", message:(e.message)});
+        yield put({type: "onFailureRestaurantReg", message:(e.message)});
     }
 }
 
@@ -43,8 +45,8 @@ function* loadLocations(action){
 
 function* CreateRestaurantSaga() {
     //using takeEvery, you take the action away from reducer to saga
-    yield takeEvery("Create", createRestaurant);
-    yield takeEvery("LoadLocations", loadLocations);
+    yield takeEvery("CreateNewRestaurant", createRestaurant);
+    //yield takeEvery("LoadLocations", loadLocations);
 }
 
 export default CreateRestaurantSaga;

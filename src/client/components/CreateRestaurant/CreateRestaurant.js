@@ -7,9 +7,9 @@ import CssBaseline from "@material-ui/core/CssBaseline";
 import Avatar from "@material-ui/core/Avatar";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
-import Box from "@material-ui/core/Box";
 import {makeStyles} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
+import CreateRestaurantActions from "./actions";
 
 export const classes = makeStyles(theme => ({
     '@global': {
@@ -107,26 +107,24 @@ class CreateRestaurant extends React.Component {
                                         Upload Picture
                                     </Button>
                                     <Grid container justify="center" alignItems="center">
-                                        <Avatar src={"this.props.picture"}
+                                        <Avatar src={this.props.picture}
                                                 style={{borderRadius: 0, width: "200", height: "200"}}/>
                                     </Grid>
                                 </label>
                             </Grid>
                         </Grid>
                         <Button
-                            type="submit"
+                            type="Create"
                             fullWidth
                             variant="contained"
                             color="primary"
-                            onClick={() => this.props.onClickSubmitEventHandler(this.props.username, this.props.location, this.props.picture)}
-                            className={classes.submit}
+                            onClick={this.props.onClickCreateEvent(this.props.username, this.props.location, this.props.description, this.props.picture)}
+                            className={classes.button}
                         >
                             Create
                         </Button>
                     </form>
                 </div>
-                <Box mt={5}>
-                </Box>
             </Container>
         );
     }
@@ -135,6 +133,11 @@ class CreateRestaurant extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
+        // name: state['createRestaurant'].get('name'),
+        // location: state['createRestaurant'].get('location'),
+        // description: state["createRestaurant"].get('description'),
+        // picture: state['createRestaurant'].get('picture'),
+        // locations: state['createRestaurant'].get('locations')
     }
 };
 
@@ -152,11 +155,11 @@ const mapDispatchToProps = (dispatch) => {
         handleLocationChange: (e) => {
             dispatch({type: 'onLocationChange', value: e.target.value})
         },
-        loadLocationsEvent:() =>{
+        loadLocationsEvent: () => {
             dispatch({type: 'LoadLocations'})
         },
-        onClickSubmitEventHandler: (username, location, picture) => {
-            dispatch(CreateRestaurant.Create(username, location, picture))
+        onClickCreateEvent: (username, location, description, picture) => {
+            dispatch(CreateRestaurantActions.Create(username, location, description, picture))
         },
     }
 };

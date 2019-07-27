@@ -1,13 +1,5 @@
 import {CreateReviewActionsConstants} from './constants.js';
 
-function UpdateUsernameAction(username) {
-    return {
-        type: SignUpActionsConstants.UpdateUsernameAction,
-        payload: {
-            username
-        }
-    }
-}
 
 
 function CreateReview(username, restaurant, bathroom, staff, clean, drive, delivery, food, pictures) {

@@ -9,23 +9,14 @@ import Collapse from '@material-ui/core/Collapse';
 import Avatar from '@material-ui/core/Avatar';
 import IconButton from '@material-ui/core/IconButton';
 import Typography from '@material-ui/core/Typography';
-import {red} from '@material-ui/core/colors';
 import ShareIcon from '@material-ui/icons/Share';
 import MoreVertIcon from '@material-ui/icons/MoreVert';
 import {connect} from "react-redux";
 import {Dialog} from "primereact/dialog";
 import {Button} from "primereact/button";
 import Review from "../Review/Review";
-import {ListItemAvatar} from "@material-ui/core";
 import List from "@material-ui/core/List";
-import ListItem from "@material-ui/core/ListItem";
-import ViewRestaurant from "../ViewRestaurant/ViewRestaurant";
-import Gallery from "../Gallery/Gallery";
 import {Toolbar} from "primereact/components/toolbar/Toolbar";
-import Box from "@material-ui/core/Box";
-import TextField from "@material-ui/core/TextField";
-import Grid from "@material-ui/core/Grid";
-import {Rating} from "primereact/rating";
 import CreateReview from "../CreateReview/CreateReview";
 
 const classes = makeStyles(theme => ({
@@ -164,13 +155,6 @@ class Restaurant extends React.Component {
                         <CreateReview
                             username={this.props.username}
                             name={this.props.name}
-                            r1={null}
-                            r2={null}
-                            r3={null}
-                            r4={null}
-                            r5={null}
-                            r6={null}
-                            picture={null}
                         />
                     </Dialog>
                     <Button

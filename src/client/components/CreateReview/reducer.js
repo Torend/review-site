@@ -8,10 +8,10 @@ const CreateReviewReducer = (state = null, action) => {
         case "sortReviewsByScore":
             console.log("good");
             return state;
-        case "onSuccessReg":
+        case "onSuccessCreateReview":
             console.log("good");
             return state;
-        case "onFailureReg":
+        case "onFailureCreateReview":
             console.log(action.message);
             return state;
     }
