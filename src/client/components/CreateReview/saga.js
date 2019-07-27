@@ -1,8 +1,9 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
 import CreateReviewActions from "./acrions";
-
+import CreateReviewConstants from "./constants";
 function* CreateNewReview(action){
     console.log('CreateReviewSaga=', action);
+    alert("VIA");
     try {
         const res = yield call(fetch, action.uri,
             {
@@ -23,7 +24,7 @@ function* CreateNewReview(action){
 
 function* CreateReviewSaga() {
     //using takeEvery, you take the action away from reducer to saga
-    yield takeEvery("hhhhhhhhh", CreateNewReview);// need to change after fix
+    yield takeEvery(CreateReviewConstants.CREATE_REVIEW, CreateNewReview);// need to change after fix
 }
 
 export default CreateReviewSaga;

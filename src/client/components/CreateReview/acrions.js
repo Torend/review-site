@@ -10,7 +10,7 @@ function UpdateUsernameAction(username) {
 }
 
 
-function CreateReview(username, restaurant, bathroom, staff, clean, drive, delivery, food, picture) {
+function CreateReview(username, restaurant, bathroom, staff, clean, drive, delivery, food, pictures) {
     return {
         type: CreateReviewActionsConstants.CREATE_REVIEW,
         uri: '/api/reviews',
@@ -23,7 +23,7 @@ function CreateReview(username, restaurant, bathroom, staff, clean, drive, deliv
             drive,
             delivery,
             food,
-            picture
+            pictures
         }
     }
 }

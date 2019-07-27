@@ -12,7 +12,7 @@ const CreateReviewReducer = (state = null, action) => {
             console.log("good");
             return state;
         case "onFailureReg":
-            //console.log(action.message);
+            console.log(action.message);
             return state;
     }
     return state;

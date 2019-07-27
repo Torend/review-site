@@ -76,6 +76,7 @@ class CreateReview extends React.Component {
                             onChange={(e) => this.setState({r1: e.value})}/>
                 </Box>
                 <Box component="fieldset" width={1 / 5} mb={0} borderColor="transparent">
+                    <Typography component="legend">Staff</Typography>
                     <Rating value={this.state.r2} cancel={false}
                             onChange={(e) => this.setState({r2: e.value})}/>
                 </Box>
