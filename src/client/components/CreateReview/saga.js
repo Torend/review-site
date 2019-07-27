@@ -13,8 +13,19 @@ function* CreateNewReview(action){
                 },
                 body: JSON.stringify(action.payload)
             });
-        const json = yield call([res, 'json']); //retrieve body of response
-        yield put({type: "onSuccessCreateReview"});
+        if (res.status === 400)
+        {
+            yield put({type: "onFailureCreateReview"});
+
+        }
+        if (res.status === 200)
+        {
+            const json = yield call([res, 'json']); //retrieve body of response
+            yield put({type: "onSuccessCreateReview"});
+        }
+
+
+
     } catch (e) {
         alert(e.message);
         console.debug(e.message);

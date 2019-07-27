@@ -26,6 +26,7 @@ module.exports = (app) => {
                     newDoc.food = (req.body.food);
                     newDoc.pictures = (req.body.pictures);
                     newDoc.save(_handleError);
+
                     UserSchema.findOne({'username': req.body.username}).then(userDoc => {
                         userDoc.reviews.push(newDoc._id);
                         userDoc.save(_handleError);
@@ -36,8 +37,8 @@ module.exports = (app) => {
                         restaurantDoc.save(_handleError);
                     });
                     res.json(newDoc);
-                    res.end();
-                    res.status(200).send('New restaurant created')
+                    //res.end();
+                    //res.status(200).send('New restaurant created')
                 } else {
                     res.status(400).send('You already reviewed the restaurant.')
                 }

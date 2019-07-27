@@ -59,13 +59,14 @@ class CreateReview extends React.Component {
 
 
     render() {
+        localStorage.setItem('username', "usus");
         return (
             <Card className={classes.card}>
                 <Button
                     type="submit"
                     variant="contained"
                     color="secondary"
-                    onClick={() => this.props.onClickSubmitCrateReview(this.props.username, this.props.name, this.state.r1, this.state.r2, this.state.r3,
+                    onClick={() => this.props.onClickSubmitCrateReview(localStorage.getItem('username'), this.props.name, this.state.r1, this.state.r2, this.state.r3,
                         this.state.r4, this.state.r5, this.state.r6, this.state.picture)}
                     className={classes.submit}
                 >
@@ -135,7 +136,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onClickSubmitCrateReview: (username, restaurant, bathroom, staff, clean, drive, delivery, food, picture) => {
-            dispatch(CreateReviewActions.CreateReview("username", restaurant, bathroom, staff, clean, drive, delivery, food, picture))
+            dispatch(CreateReviewActions.CreateReview(username, restaurant, bathroom, staff, clean, drive, delivery, food, picture))
         },
     }
 };
