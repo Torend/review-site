@@ -4,13 +4,11 @@ import Card from '@material-ui/core/Card';
 import Avatar from '@material-ui/core/Avatar';
 import Typography from '@material-ui/core/Typography';
 import {connect} from "react-redux";
-import {Button} from "primereact/button";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import {Rating} from "primereact/rating";
-import SignUpActions from "../SignUp/actions";
 import CreateReviewActions from "./acrions";
-import {CreateReviewActionsConstants} from "./constants";
+import Button from "@material-ui/core/Button";
 
 const classes = makeStyles(theme => ({
     card: {
@@ -37,12 +35,15 @@ const classes = makeStyles(theme => ({
     body: {
         backgroundColor: theme.palette.common.white,
     },
+    submit: {
+        margin: theme.spacing(5, 2, 5),
+    },
 }));
 
 
 class CreateReview extends React.Component {
-    constructor() {
-        super();
+    constructor(props) {
+        super(props);
         this.state = {
             visible: false,
             visible2: false,
@@ -61,13 +62,15 @@ class CreateReview extends React.Component {
         return (
             <Card className={classes.card}>
                 <Button
-                    className={'p-button-danger'}
-                    label="submit"
-                    icon="pi pi-pencil"
-                    //onClick={()=>{console.log("WTFFFF")}}
-                    onClick={this.props.onClickSubmitCrateReview(this.props.username, this.props.name, this.state.r1, this.state.r2, this.state.r3,
-                        this.state.r4, this.state.r5, this.state.r6, this.state.picture)} //need to check how to pass the username
-                />
+                    type="submit"
+                    variant="contained"
+                    color="secondary"
+                    onClick={() => this.props.onClickSubmitCrateReview(this.props.username, this.props.name, this.state.r1, this.state.r2, this.state.r3,
+                        this.state.r4, this.state.r5, this.state.r6, this.state.picture)}
+                    className={classes.submit}
+                >
+                    Submit
+                </Button>
                 <Box component="fieldset" width={1 / 5} mb={0} borderColor="transparent">
                     <Typography component="legend">Bathroom Quality</Typography>
                     <Rating value={this.state.r1} cancel={false}
@@ -131,24 +134,8 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onClickSubmitCrateReview: (username, restaurant, bathroom, staff, clean, drive, delivery, food, picture) => {
-            console.log("why????");
-            dispatch(CreateReviewActions.CreateReview(username, restaurant, bathroom, staff, clean, drive, delivery, food, picture))
+            dispatch(CreateReviewActions.CreateReview("username", restaurant, bathroom, staff, clean, drive, delivery, food, picture))
         },
-        // onSubmitButtonclick:(username, restaurant, bathroom, staff, clean, drive, delivery, food, picture)=>{
-        //     dispatch({type: "submit",
-        //         uri: '/api/reviews',
-        //         payload: {
-        //             username,
-        //             restaurant,
-        //             bathroom,
-        //             staff,
-        //             clean,
-        //             drive,
-        //             delivery,
-        //             food,
-        //             picture
-        //         }})
-        // }
     }
 };
 

@@ -14,24 +14,56 @@ import InputLabel from "@material-ui/core/InputLabel";
 import FormControl from "@material-ui/core/FormControl";
 import Select from "@material-ui/core/Select";
 import MenuItem from "@material-ui/core/MenuItem";
+import {Dialog} from "primereact/components/dialog/Dialog";
+import CreateRestaurant from "../CreateRestaurant/CreateRestaurant";
+import CardActions from "@material-ui/core/CardActions";
 
 
 class ViewRestaurant extends React.Component {
+    constructor(){
+        super();
+        this.state = {
+            visible: false,
+        };
+        this.onClick = this.onClick.bind(this);
+        this.onHide = this.onHide.bind(this);
+    }
+
+
+    onClick() {
+        this.setState({visible: true});
+    }
+
+    onHide() {
+        this.setState({visible: false});
+    }
+
     componentDidMount() {
         this.props.loadRestaurantEvent();
-        this.props.LoadLocations();
+       // this.props.LoadLocations();
     }
 
     render() {
-
         return (
             <div>
                 <List>
                     <Toolbar>
                         <div className="p-toolbar-group-left">
+
                             <Button label="By Score" icon="pi pi-sort" style={{marginRight: '.25em'}}
                                     onClick={this.props.sortByScore}/>
                             <Button label="By Location" icon="pi pi-sort" className="p-button-warning"/>
+                            <Dialog visible={this.state.visible}
+                                    style={{width: '60vw'}} onHide={this.onHide} maximizable>
+                                <CreateRestaurant/>
+                            </Dialog>
+                            <Button
+                                className={'p-button-danger'}
+                                label="Add Restaurant"
+                                icon=" pi pi-plus-circle"
+                                onClick={this.onClick}
+                                style={{marginRight: '.25em'}}
+                            />
                         </div>
                         <div className="p-toolbar-group-right">
                             <label htmlFor="in">Search By Name </label>

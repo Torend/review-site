@@ -1,12 +1,11 @@
 import {SignUpActionsConstants} from "../SignUp/constants";
 
 function Create(name, description, location, picture) {
-    alert("mada");
     return {
-        type: "Create",
+        type: "CreateNewRestaurant",
         uri: '/api/restaurants',
         payload: {
-            username,
+            name,
             description,
             location,
             picture

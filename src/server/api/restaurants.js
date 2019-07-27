@@ -7,8 +7,8 @@ let _handleError = function(err){
 module.exports = (app) => {
     // for restaurant creation
     app.post('/api/restaurants', function (req, res, next) {
-        console.log('users post');
-        //console.log(req);
+        console.log('restaurant creation');
+        console.log(req.body);
         AppModel
             .findOne({'name': req.body.name})
             .then(doc => {
