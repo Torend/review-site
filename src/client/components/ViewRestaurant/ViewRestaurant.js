@@ -7,16 +7,9 @@ import List from "@material-ui/core/List";
 import {Toolbar} from "primereact/toolbar";
 import {Button} from "primereact/button";
 import {InputText} from "primereact/inputtext";
-import {AutoComplete} from "primereact/autocomplete";
 import {Dropdown} from "primereact/dropdown";
-import NativeSelect from "@material-ui/core/NativeSelect";
-import InputLabel from "@material-ui/core/InputLabel";
-import FormControl from "@material-ui/core/FormControl";
-import Select from "@material-ui/core/Select";
-import MenuItem from "@material-ui/core/MenuItem";
 import {Dialog} from "primereact/components/dialog/Dialog";
 import CreateRestaurant from "../CreateRestaurant/CreateRestaurant";
-import CardActions from "@material-ui/core/CardActions";
 
 
 class ViewRestaurant extends React.Component {
@@ -40,7 +33,6 @@ class ViewRestaurant extends React.Component {
 
     componentDidMount() {
         this.props.loadRestaurantEvent();
-       // this.props.LoadLocations();
     }
 
     render() {
@@ -49,7 +41,6 @@ class ViewRestaurant extends React.Component {
                 <List>
                     <Toolbar>
                         <div className="p-toolbar-group-left">
-
                             <Button label="By Score" icon="pi pi-sort" style={{marginRight: '.25em'}}
                                     onClick={this.props.sortByScore}/>
                             <Button label="By Location" icon="pi pi-sort" className="p-button-warning"/>
@@ -66,8 +57,7 @@ class ViewRestaurant extends React.Component {
                             />
                         </div>
                         <div className="p-toolbar-group-right">
-                            <label htmlFor="in">Search By Name </label>
-                            <InputText id="in" value={this.props.searchValue} style={{marginRight: '.25em'}} onChange={this.props.filterByName}/>
+                            <InputText id="in"  placeholder={"Search By Name"} value={this.props.searchValue} style={{marginRight: '.25em'}} onChange={this.props.filterByName}/>
                             <Dropdown
                                 value={this.props.location}
                                 options={this.props.locations}
@@ -110,9 +100,9 @@ const mapDispatchToProps = (dispatch) => {
         loadRestaurantEvent: () => {
             dispatch({type: "loadRestaurantEvent"});
         },
-        LoadLocations: () => {
-            dispatch({type: "LoadLocationsEvent"});
-        },
+        // LoadLocations: () => {
+        //     dispatch({type: "LoadLocationsEvent"});
+        // },
         sortByScore: () => {
             dispatch({type: "sortByScore"});
         },

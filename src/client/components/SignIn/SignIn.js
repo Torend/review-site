@@ -44,10 +44,6 @@ export const classes = makeStyles(theme => ({
 
 class SignIn extends Component {
 
-    componentDidMount() {
-        //this.props.loadLocationsEvent();
-    }
-
     render() {
         return (
             <Container component="main" maxWidth="xs">
@@ -103,10 +99,6 @@ const mapDispatchToProps = (dispatch) => {
     return {
         onClickSubmitEventHandler: (username) => {
             dispatch(SignInActions.Login(username))
-            //dispatch({type: 'onSubmit', username: username, location: location, picture: picture})
-        },
-        loadLocationsEvent:() =>{
-            dispatch({type: 'LoadLocations'})
         },
         handleUsernameChange: (e) => {
             dispatch({type: 'onUsernameChange', value: e.target.value})

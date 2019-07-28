@@ -3,7 +3,7 @@ const {List, Map} = require('immutable');
 const review1 = {
     name: "dani",
     date: "12.3.2019",
-    desc: "bla bla bla bla bla bla",
+    restaurant: "bla bla bla bla bla bla",
     average: 4,
     r1: 4,
     r2: 4,
@@ -16,7 +16,7 @@ const review1 = {
 const review2 = {
     name: "alon",
     date: "12.3.2019",
-    desc: "kkkkkkkkkkkkk",
+    restaurant: "kkkkkkkkkkkkk",
     average: 2,
     r1: 2,
     r2: 2,
@@ -28,16 +28,33 @@ const review2 = {
 
 const review3 = {
     name: "kaki",
-    date: "12.3.2019",
-    desc: "bhhhhhhhhhhhhhhhh",
-    average: 3,
-    r1: 4,
-    r2: 2,
-    r3: 4,
-    r4: 5,
-    r5: 3,
-    r6: 4,
+        date: "12.3.2019",
+        restaurant: "bhhhhhhhhhhhhhhhh",
+        average: 3,
+        r1: 4,
+        r2: 2,
+        r3: 4,
+        r4: 5,
+        r5: 3,
+        r6: 4,
 };
+
+const users = [{
+    name: "kakai",
+    location: 'Tel Aviv',
+    picture: null,
+    reviews: [review3, review1, review2, review2]
+},{
+    name: "aaaaa",
+    location: 'Tel Aviv',
+    picture: null,
+    reviews: [review1, review2]
+},{
+    name: "bbbbbb",
+    location: 'BeerSheva',
+    picture: null,
+    reviews: [review3]
+}];
 
 const data = [{
     name: "Mcdonalds",
@@ -65,16 +82,16 @@ const data = [{
     reviews: [review1]
 }];
 
-const cities =  [
-    { label: 'none', value: 'none' },
-    { label: 'New York', value: 'NY' },
-    { label: 'Rome', value: 'RM' },
-    { label: 'London', value: 'LDN' },
-    { label: 'Istanbul', value: 'IST' },
-    { label: 'Paris', value: 'PRS' },
-    { label: 'Tel Aviv', value: 'Tel Aviv' },
-    { label: 'BeerSheva', value: 'BeerSheva' },
-    { label: 'RamtGan', value: 'RamtGan' }];
+const cities = [
+    {label: 'none', value: ''},
+    {label: 'New York', value: 'New York'},
+    {label: 'Rome', value: 'Rome'},
+    {label: 'London', value: 'London'},
+    {label: 'Istanbul', value: 'Istanbul'},
+    {label: 'Paris', value: 'Paris'},
+    {label: 'Tel Aviv', value: 'Tel Aviv'},
+    {label: 'BeerSheva', value: 'BeerSheva'},
+    {label: 'RamtGan', value: 'RamtGan'}];
 
 
 export default {
@@ -100,10 +117,10 @@ export default {
         username: ''
     }),
     viewRestaurant: Map({
-        restaurants: List(data),
+        restaurants: List(),
         searchValue: '',
         sort: 'default',
-        backup: List(data),
+        backup: List(),
         locations: cities,
         searchLocationValue: ''
     }),
@@ -114,4 +131,14 @@ export default {
         locations: cities,
         picture: null
     }),
+    searchUsers: Map({
+        users: List(users),
+        backup: List(users),
+        searchValue:''
+    }),
+    viewProfile: Map({
+        username: '',
+        location: '',
+        picture: null
+    })
 };

@@ -4,13 +4,17 @@ import AppSaga from './components/App/saga'
 import SignUpSaga from "./components/SignUp/saga";
 import CreateReviewSaga from "./components/CreateReview/saga";
 import CreateRestaurant from "./components/CreateRestaurant/saga";
+import ViewRestaurantSaga from "./components/ViewRestaurant/saga";
+import ViewProfileSaga from "./components/ViewProfile/saga";
 
 export default function* Sagas() {
     yield all([
         AppSaga(),
         GallerySaga(),
         SignUpSaga(),
+        ViewRestaurantSaga(),
         CreateRestaurant(),
-        CreateReviewSaga()
+        CreateReviewSaga(),
+        ViewProfileSaga()
     ])
 }

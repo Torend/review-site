@@ -6,19 +6,19 @@ const ViewRestaurantReducer = (state = initialState.viewRestaurant, action) => {
     console.log('RECEIVED ACTION:', action);
     switch (action.type) {
         case "loadRestaurantSuccess":
-            let res = action.data.map(elm => {
-                return {label: elm, value: elm}
-            });
-            return state.set('restaurants', new List(res));
-        case "loadLocationsSuccess":
-            let loc = action.data.map(elm => {
-                return {label: elm, value: elm}
-            });
-            return state.set('locations', new List(loc));
+            state = state.set("backup", List(action.data));
+            return state.set('restaurants', List(action.data));
+        // case "loadLocationsSuccess":
+        //     let loc = action.data.map(elm => {
+        //         return {label: elm, value: elm}
+        //     });
+        //     return state.set('locations', new List(loc));
         case "filterByLocation":
-            state.set('searchLocationValue', action.value.name);
+            if(action.value === '')
+                return state = state.set("restaurants", state.get("backup"));
+            state.set('searchLocationValue', action.value);
             return state = state.set("restaurants", state.get("backup").filter((restaurant) => {
-                return restaurant.location === action.value.name;
+                return restaurant.location === action.value;
             }));
         case "sortByScore":
             if (state.get("sort") !== "sortByScore") {

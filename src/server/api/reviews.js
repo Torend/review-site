@@ -36,8 +36,8 @@ module.exports = (app) => {
                         restaurantDoc.save(_handleError);
                     });
                     res.json(newDoc);
-                    res.end();
-                    res.status(200).send('New restaurant created')
+                    // res.end();
+                    // res.status(200).send('New restaurant created')
                 } else {
                     res.status(400).send('You already reviewed the restaurant.')
                 }
