@@ -6,7 +6,7 @@ let _handleError = function(err){
 
 module.exports = (app) => {
     // for restaurant creation
-    app.post('/api/restaurants', function (req, res, next) {
+    app.post('/api/restaurantss', function (req, res, next) {
         console.log('restaurant creation');
         console.log(req.body);
         AppModel
@@ -16,6 +16,7 @@ module.exports = (app) => {
                     let newDoc = new AppModel();
                     newDoc.name = (req.body.name);
                     newDoc.location = (req.body.location);
+                    newDoc.description = (req.body.description);
                     newDoc.reviews = ([]);
                     newDoc.save(_handleError);
                     res.json(newDoc);
@@ -37,6 +38,20 @@ module.exports = (app) => {
                     //res.status(200).send('The username is valid')
                 } else {
                     res.status(400).send('The username is invalid')
+                }
+            });
+    });
+
+    app.get('/api/users/restaurants', function (req, res, next) {
+        console.log(`get all the restaurants`);
+        AppModel
+            .find({})
+            .then(doc => {
+                if (doc === null) {
+                    res.status(400).send('No restaurants')
+                } else {
+                    res.json(doc);
+                    res.end();
                 }
             });
     });

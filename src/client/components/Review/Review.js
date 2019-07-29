@@ -36,6 +36,7 @@ class Review extends React.Component {
         return (
             <Card style={{width: 400}}>
                 <Typography fontSize={18} color="textSecondary" gutterBottom>
+                    <h4>Restaurant: {this.props.value.restaurant}</h4>
                     <h4>Reviewed by: {this.props.value.name}</h4>
                     <h4>{this.props.value.date}</h4>
                     <Box component="fieldset" width={1 / 8} mb={0} borderColor="transparent">

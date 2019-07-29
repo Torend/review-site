@@ -30,7 +30,7 @@ const classes = makeStyles(theme => ({
     },
     avatar: {
         margin: theme.spacing(1),
-        backgroundColor: theme.palette.secondary.main,
+        //backgroundColor: theme.palette.secondary.main,
     },
     body: {
         backgroundColor: theme.palette.common.white,
@@ -67,7 +67,7 @@ class CreateReview extends React.Component {
                     variant="contained"
                     color="secondary"
                     onClick={() => this.props.onClickSubmitCrateReview(localStorage.getItem('username'), this.props.name, this.state.r1, this.state.r2, this.state.r3,
-                        this.state.r4, this.state.r5, this.state.r6, this.state.picture)}
+                    this.state.r4, this.state.r5, this.state.r6, this.state.picture)}
                     className={classes.submit}
                 >
                     Submit
@@ -112,7 +112,7 @@ class CreateReview extends React.Component {
                             multiple
                             type="file"
                             onChange={(e) => {
-                                this.setState({picture: e.target.files[0]})
+                                this.setState({picture: URL.createObjectURL(e.target.files[0])})
                             }}
                         />
                         <label htmlFor="raised-button-file">
