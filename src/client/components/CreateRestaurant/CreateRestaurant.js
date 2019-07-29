@@ -133,11 +133,11 @@ class CreateRestaurant extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        // name: state['createRestaurant'].get('name'),
-        // location: state['createRestaurant'].get('location'),
-        // description: state["createRestaurant"].get('description'),
-        // picture: state['createRestaurant'].get('picture'),
-        // locations: state['createRestaurant'].get('locations')
+        name: state['createRestaurant'].get('name'),
+        location: state['createRestaurant'].get('location'),
+        description: state["createRestaurant"].get('description'),
+        picture: state['createRestaurant'].get('picture'),
+        locations: state['createRestaurant'].get('locations')
     }
 };
 

@@ -1,7 +1,7 @@
 import initialState from '../../initialState'
 import {List} from "immutable";
 
-const CreateRestaurantReducer = (state = initialState.createRestaurant, action) => {
+const createRestaurantReducer = (state = initialState.createRestaurant, action) => {
     console.log('CreateRestaurantReducerState=', state);
     console.log('RECEIVED ACTION:', action);
     switch (action.type) {
@@ -30,4 +30,4 @@ const CreateRestaurantReducer = (state = initialState.createRestaurant, action) 
     }
 };
 
-export default CreateRestaurantReducer
+export default createRestaurantReducer

@@ -2,7 +2,7 @@ import initialState from '../../initialState'
 import CreateReview from "./CreateReview";
 
 const CreateReviewReducer = (state = null, action) => {
-    console.log('CreateReviewReducer=', state);
+    console.log('createReviewReducer=', state);
     console.log('RECEIVED ACTION:', action);
     switch (action.type) {
         case "sortReviewsByScore":

@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
-import CreateReviewActions from "./acrions";
+import CreateReviewActions from "./actions";
 import {CreateReviewActionsConstants} from "./constants";
 
 function* CreateNewReview(action){

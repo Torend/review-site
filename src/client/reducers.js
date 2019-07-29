@@ -4,8 +4,8 @@ import AppReducer from './components/App/reducer';
 import SignUpReducer from "./components/SignUp/reducer";
 import SignInReducer from "./components/SignIn/reducer";
 import ViewRestaurantReducer from "./components/ViewRestaurant/reducer";
-import CreateRestaurantReducer from "./components/CreateRestaurant/reducer";
-import CreateReviewReducer from "./components/CreateReview/reducer";
+import createRestaurantReducer from "./components/CreateRestaurant/reducer";
+import createReviewReducer from "./components/CreateReview/reducer";
 
 
 export default combineReducers({
@@ -14,6 +14,6 @@ export default combineReducers({
   signUp: SignUpReducer,
   signIn: SignInReducer,
   viewRestaurant: ViewRestaurantReducer,
-  CreateRestaurant: CreateRestaurantReducer,
-  CreateReview: CreateReviewReducer
+  createRestaurant: createRestaurantReducer,
+  createReview: createReviewReducer
 });

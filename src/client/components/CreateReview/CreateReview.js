@@ -7,7 +7,7 @@ import {connect} from "react-redux";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import {Rating} from "primereact/rating";
-import CreateReviewActions from "./acrions";
+import createReviewActions from "./actions";
 import Button from "@material-ui/core/Button";
 
 const classes = makeStyles(theme => ({
@@ -136,7 +136,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onClickSubmitCrateReview: (username, restaurant, bathroom, staff, clean, drive, delivery, food, picture) => {
-            dispatch(CreateReviewActions.CreateReview(username, restaurant, bathroom, staff, clean, drive, delivery, food, picture))
+            dispatch(CreateReviewActions.createReview(username, restaurant, bathroom, staff, clean, drive, delivery, food, picture))
         },
     }
 };
