@@ -6,6 +6,7 @@ import CreateReviewSaga from "./components/CreateReview/saga";
 import CreateRestaurant from "./components/CreateRestaurant/saga";
 import ViewRestaurantSaga from "./components/ViewRestaurant/saga";
 import ViewProfileSaga from "./components/ViewProfile/saga";
+import SearchUsersSaga from "./components/SearchUsers/saga";
 
 export default function* Sagas() {
     yield all([
@@ -15,6 +16,7 @@ export default function* Sagas() {
         ViewRestaurantSaga(),
         CreateRestaurant(),
         CreateReviewSaga(),
-        ViewProfileSaga()
+        ViewProfileSaga(),
+        SearchUsersSaga()
     ])
 }

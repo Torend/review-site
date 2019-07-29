@@ -22,9 +22,31 @@ function* loadUser(action){
 }
 
 
+function* editProfile(action){
+    console.log('ViewProfileSaga=', action);
+    try {
+        const res = yield call(fetch, '/api/users/:username',
+            {
+                method: 'PUT',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                params: JSON.stringify({
+                    username: action.value,
+                }),
+                body: JSON.stringify(action.payload)
+            });
+        const json = yield call([res, 'json']); //retrieve body of response
+        yield put({type: "onSuccessUpdateUser", value: json});
+    } catch (e) {
+        yield put({type: "onFailUpdateUser", message:(e.message)});
+    }
+}
+
 function* ViewProfileSaga() {
 
     yield takeEvery("loadUserEvent", loadUser);
+    yield takeEvery("editProfileEvent", editProfile)
 }
 
 export default ViewProfileSaga;

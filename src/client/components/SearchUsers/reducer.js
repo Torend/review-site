@@ -7,12 +7,13 @@ const SearchUsersReducer = (state = initialState.searchUsers, action) => {
         case "filterUsersByName":
             state.set('searchValue', action.value);
             let len = action.value.length;
-            return state = state.set("searchUsers", state.get("backup").filter((user) => {
-                    return user.name.substring(0, len) === action.value;
+            return state = state.set("users", state.get("backup").filter((user) => {
+                    return user.username.substring(0, len) === action.value;
                 }
             ));
-        case "onFailureReg":
-            console.log("onFailureReg");
+        case "onSuccessLoadUsers":
+            state = state.set("users", action.value);
+            state = state.set("backup", action.value);
             return state;
         default:
             return state; // state is lost

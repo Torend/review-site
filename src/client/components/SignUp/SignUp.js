@@ -42,10 +42,6 @@ export const classes = makeStyles(theme => ({
 
 class SignUp extends Component {
 
-    componentDidMount() {
-        this.props.loadLocationsEvent();
-    }
-
     render() {
         return (
             <Container component="main" maxWidth="xs">
@@ -157,9 +153,6 @@ const mapDispatchToProps = (dispatch) => {
             dispatch(SignUpActions.Register(username, location, picture))
             //dispatch({type: 'onSubmit', username: username, location: location, picture: picture})
         },
-        loadLocationsEvent:() =>{
-            dispatch({type: 'LoadLocations'})
-        }
     }
 };
 

@@ -132,8 +132,8 @@ export default {
         picture: null
     }),
     searchUsers: Map({
-        users: List(users),
-        backup: List(users),
+        users: List(),
+        backup: List(),
         searchValue:''
     }),
     viewProfile: Map({

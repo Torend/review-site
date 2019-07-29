@@ -9,6 +9,7 @@ import Grid from "@material-ui/core/Grid";
 import {Rating} from "primereact/rating";
 import createReviewActions from "./actions";
 import Button from "@material-ui/core/Button";
+import CreateReviewActionsConstants from "../../reducers";
 
 const classes = makeStyles(theme => ({
     card: {
@@ -136,7 +137,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onClickSubmitCrateReview: (username, restaurant, bathroom, staff, clean, drive, delivery, food, picture) => {
-            dispatch(CreateReviewActions.createReview(username, restaurant, bathroom, staff, clean, drive, delivery, food, picture))
+            dispatch(CreateReviewActionsConstants.createReview(username, restaurant, bathroom, staff, clean, drive, delivery, food, picture))
         },
     }
 };
