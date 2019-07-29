@@ -53,7 +53,7 @@ module.exports = (app) => {
             });
     });
     // for profile viewing
-    app.get('/api/users/:username', function(req, res, next) {
+    app.get('/api/users/get/:username', function(req, res, next) {
         console.log(`users get /${req.params.username}`);
         console.log(req.params.username);
         AppModel

@@ -4,7 +4,7 @@ import { call, put, takeEvery } from 'redux-saga/effects'
 function* loadUser(action){
     console.log('ViewProfileSaga=', action);
     try {
-        const res = yield call(fetch, '/api/users/:username',
+        const res = yield call(fetch, '/api/users/get/:username',
             {
                 method: 'GET',
                 headers: {
