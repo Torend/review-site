@@ -68,7 +68,8 @@ module.exports = (app) => {
     });
     //for own profile update
     app.put('/api/users/:username', function(req, res, next) {
-        console.log('users post');
+        console.log("profile update");
+        console.log(req.param);
         AppModel
             .findOne({'username': req.param.username})
             .then(doc => {

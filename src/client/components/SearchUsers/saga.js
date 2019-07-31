@@ -2,9 +2,8 @@ import {AppActionsConstants, SearchUsersActionsConstants} from './constants'
 import { call, put, takeEvery } from 'redux-saga/effects'
 
 
-function* searchUsers(action){ //todo: change to fit search users
+function* searchUsers(action){
     console.log('SearchUsersSaga=', action);
-    alert(action.uri);
     try {
         const res = yield call(fetch, '/api/users',
             {

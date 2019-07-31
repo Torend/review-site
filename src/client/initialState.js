@@ -140,5 +140,11 @@ export default {
         username: '',
         location: '',
         picture: null
+    }),
+    viewUser: Map({
+        userReviews: List()
+    }),
+    restaurant: Map({
+        restaurantReviews: List()
     })
 };

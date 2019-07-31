@@ -22,7 +22,7 @@ class ViewProfile extends Component {
     }
 
     componentDidMount() {
-        this.props.loadUsersEventHandler();
+        this.props.loadUserEventHandler();
     }
 
 
@@ -120,16 +120,16 @@ const mapDispatchToProps = (dispatch) => {
         handleUsernameChange: (e) => {
             dispatch({type: 'onUsernameChange', value: e.target.value})
         },
-        loadUsersEventHandler: () => {
+        loadUserEventHandler: () => {
             dispatch({type: 'loadUserEvent', value: (localStorage.getItem('username'))})
         },
-        // editProfileEvent: (username, location) => {
-        //     dispatch({type: 'editProfileEvent', username: (localStorage.getItem('username')),
-        //         payload:{
-        //             username: username,
-        //             location: location
-        //         }})
-        // },
+        editProfileEvent: (username, location) => {
+            dispatch({type: 'editProfileEvent', username: (localStorage.getItem('username')),
+                payload:{
+                    username: username,
+                    location: location
+                }})
+        },
     }
 };
 

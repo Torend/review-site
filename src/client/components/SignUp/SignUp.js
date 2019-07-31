@@ -68,7 +68,7 @@ class SignUp extends Component {
                                 />
                             </Grid>
                             <Grid item xs={20}>
-                                <Dropdown //change later
+                                <Dropdown
                                     value={this.props.location}
                                     onChange={this.props.handleLocationChange}
                                     options={this.props.locations}

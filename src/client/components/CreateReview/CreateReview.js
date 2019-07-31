@@ -7,9 +7,7 @@ import {connect} from "react-redux";
 import Box from "@material-ui/core/Box";
 import Grid from "@material-ui/core/Grid";
 import {Rating} from "primereact/rating";
-import createReviewActions from "./actions";
 import Button from "@material-ui/core/Button";
-import CreateReviewActionsConstants from "../../reducers";
 
 const classes = makeStyles(theme => ({
     card: {
@@ -68,7 +66,7 @@ class CreateReview extends React.Component {
                     variant="contained"
                     color="secondary"
                     onClick={() => this.props.onClickSubmitCrateReview(localStorage.getItem('username'), this.props.name, this.state.r1, this.state.r2, this.state.r3,
-                    this.state.r4, this.state.r5, this.state.r6, this.state.picture)}
+                        this.state.r4, this.state.r5, this.state.r6, this.state.picture)}
                     className={classes.submit}
                 >
                     Submit
@@ -137,7 +135,20 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         onClickSubmitCrateReview: (username, restaurant, bathroom, staff, clean, drive, delivery, food, picture) => {
-            dispatch(CreateReviewActionsConstants.createReview(username, restaurant, bathroom, staff, clean, drive, delivery, food, picture))
+            dispatch({
+                type: "createReviewEvent",
+                payload: {
+                    username,
+                    restaurant,
+                    bathroom,
+                    staff,
+                    clean,
+                    drive,
+                    delivery,
+                    food,
+                    picture
+                }
+            })
         },
     }
 };

@@ -76,7 +76,6 @@ class ViewRestaurant extends React.Component {
                                     location={restaurant.location}
                                     description={restaurant.description}
                                     picture={restaurant.picture}
-                                    reviews={restaurant.reviews}
                                 />;
                             })}
                         </Typography>

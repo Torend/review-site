@@ -16,14 +16,23 @@ import CreateReview from "../CreateReview/CreateReview";
 import Collapse from "@material-ui/core/Collapse";
 import {makeStyles} from "@material-ui/core";
 
+export function saveReviews(lst) {
+    const reviewList = lst;
+}
+
 
 class viewUser extends React.Component {
 
+    componentDidMount() {
+        this.props.loadUserReviewsEvent(this.props.name);
+    }
+
     constructor() {
         super();
-        this.state = {visible: false,};
+        this.state = {visible: false};
         this.onClick = this.onClick.bind(this);
         this.onHide = this.onHide.bind(this);
+      //  this.reviewByName = this.reviewByName(this);
     }
 
     onClick() {
@@ -33,8 +42,15 @@ class viewUser extends React.Component {
     onHide() {
         this.setState({visible: false});
     }
+    //
+    // reviewByName(reviews, name) {
+    //   return reviews.filter(rev => {
+    //         return rev.username === name;
+    //     })
+    // }//
 
     render() {
+
         return (
             <Card style={{width: 400}}>
                 <CardHeader
@@ -57,10 +73,12 @@ class viewUser extends React.Component {
                                 modal={true}
                                 maximizable={true}
                                 onHide={this.onHide}>
-                                {this.props.reviews.map((review, id) => {
+                                {this.props.userReviews.toArray().flat().filter(rev => {
+                                    return rev.username === this.props.name;
+                                }).map((review) => {
                                     return <List>
                                         <Review
-                                            key={id}
+                                            key={review.id}
                                             value={review}
                                         />
                                     </List>
@@ -77,11 +95,17 @@ class viewUser extends React.Component {
 
 
 const mapStateToProps = (state) => {
-    return {}
+    return {
+        userReviews: state["viewUser"].get("userReviews")
+    }
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        loadUserReviewsEvent: (name) => {
+            dispatch({type: 'loadUserReviewsEvent', value: name})
+        },
+    }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(viewUser);

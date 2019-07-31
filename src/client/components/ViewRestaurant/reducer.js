@@ -57,7 +57,7 @@ const ViewRestaurantReducer = (state = initialState.viewRestaurant, action) => {
 function averageReviews(restaurant) {
     let numOfReview = restaurant.reviews.length;
     return (restaurant.reviews.map((rev) => {
-        return rev.average
+        return Review.average
     }).reduce((a, b) => a + b, 0)) / numOfReview;
 }
 

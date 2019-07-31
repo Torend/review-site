@@ -9,7 +9,6 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import {makeStyles} from "@material-ui/core";
 import Button from "@material-ui/core/Button";
-import CreateRestaurantActions from "./actions";
 
 export const classes = makeStyles(theme => ({
     '@global': {
@@ -41,10 +40,6 @@ export const classes = makeStyles(theme => ({
 
 
 class CreateRestaurant extends React.Component {
-
-    componentDidMount() {
-        this.props.loadLocationsEvent();
-    }
 
     render() {
         return (
@@ -79,7 +74,7 @@ class CreateRestaurant extends React.Component {
                                 />
                             </Grid>
                             <Grid item xs={20}>
-                                <Dropdown  //TODO need to fix
+                                <Dropdown
                                     value={this.props.location}
                                     onChange={this.props.handleLocationChange}
                                     options={this.props.locations}
@@ -114,12 +109,12 @@ class CreateRestaurant extends React.Component {
                             </Grid>
                         </Grid>
                         <Button
-                            type="Create"
+                            type="submit"
                             fullWidth
                             variant="contained"
                             color="primary"
-                            onClick={this.props.onClickCreateEvent(this.props.username, this.props.location, this.props.description, this.props.picture)}
-                            className={classes.button}
+                            onClick={this.props.createRestaurantEvent(this.props.name, this.props.location, this.props.description, this.props.picture)}
+                            className={classes.submit}
                         >
                             Create
                         </Button>
@@ -155,11 +150,13 @@ const mapDispatchToProps = (dispatch) => {
         handleLocationChange: (e) => {
             dispatch({type: 'onLocationChange', value: e.target.value})
         },
-        loadLocationsEvent: () => {
-            dispatch({type: 'LoadLocations'})
-        },
-        onClickCreateEvent: (username, location, description, picture) => {
-            dispatch(CreateRestaurantActions.Create(username, location, description, picture))
+        createRestaurantEvent: (name, location, description, picture) => {//TODO have some bug
+            dispatch({type: "createRestaurantEvent", payload:{
+                    name,
+                    location,
+                    description,
+                    picture
+                }})
         },
     }
 };

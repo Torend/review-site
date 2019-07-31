@@ -1,4 +1,3 @@
-import {List} from "immutable";
 import initialState from "../../initialState";
 
 
@@ -7,11 +6,9 @@ const ViewProfileReducer = (state = initialState.viewProfile, action) => {
     console.log('RECEIVED ACTION:', action);
     switch (action.type) {
         case "onSuccessLoadUser":
-            console.log("onSuccessReg");
-            console.log(action.value);
             state = state.set("username",action.value.username);
-            state = state.set("username",action.value.location);
-            return state = state.set("username",action.value.picture);
+            state = state.set("location",action.value.location);
+            return state = state.set("picture",action.value.img);
         case "onFailLoadUser":
             console.log("onFailureReg");
             return state;

@@ -48,6 +48,11 @@ const classes = makeStyles(theme => ({
 
 
 class Restaurant extends React.Component {
+
+    componentDidMount() {
+        this.props.loadRestaurantReviewsEvent(this.props.name);
+    }
+
     constructor() {
         super();
         this.state = {
@@ -135,7 +140,9 @@ class Restaurant extends React.Component {
                                 modal={true}
                                 maximizable={true}
                                 onHide={this.onHide}>
-                                {this.props.reviews.map((review, id) => {
+                                {this.props.restaurantReviews.toArray().flat().filter(rev => {
+                                    return rev.restaurant === this.props.name;
+                                }).map((review, id) => {
                                     return <List>
                                         <Review
                                             key={id}
@@ -174,11 +181,17 @@ class Restaurant extends React.Component {
 
 
 const mapStateToProps = (state) => {
-    return {}
+    return {
+        restaurantReviews: state["restaurant"].get("restaurantReviews")
+    }
 };
 
 const mapDispatchToProps = (dispatch) => {
-    return {}
+    return {
+        loadRestaurantReviewsEvent: (name) => {
+            dispatch({type: 'loadRestaurantReviewsEvent', value: name})
+        },
+    }
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(Restaurant);

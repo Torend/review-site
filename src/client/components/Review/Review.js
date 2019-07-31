@@ -15,6 +15,7 @@ class Review extends React.Component {
         this.state = {visible: false};
         this.onClick = this.onClick.bind(this);
         this.onHide = this.onHide.bind(this);
+        Review.average = Review.average.bind(this);
     }
 
     onClick() {
@@ -23,6 +24,10 @@ class Review extends React.Component {
 
     onHide() {
         this.setState({visible: false});
+    }
+
+    static average(x1, x2, x3, x4, x5, x6) {
+        return ((x1 + x2 + x3 + x4 + x5 + x6) / 6);
     }
 
     render() {
@@ -37,39 +42,40 @@ class Review extends React.Component {
             <Card style={{width: 400}}>
                 <Typography fontSize={18} color="textSecondary" gutterBottom>
                     <h4>Restaurant: {this.props.value.restaurant}</h4>
-                    <h4>Reviewed by: {this.props.value.name}</h4>
+                    <h4>Reviewed by: {this.props.value.username}</h4>
                     <h4>{this.props.value.date}</h4>
                     <Box component="fieldset" width={1 / 8} mb={0} borderColor="transparent">
                         <Typography component="legend">Average Rating</Typography>
-                        <Rating value={this.props.value.average} readOnly/>
+                        <Rating
+                            value={Review.average(this.props.value.bathroom, this.props.value.staff, this.props.value.clean,
+                                this.props.value.drive, this.props.value.delivery, this.props.value.food)} readOnly/>
                     </Box>
-                    <Dialog header={this.props.value.name + " Rating"} visible={this.state.visible}
+                    <Dialog header={this.props.value.username + " Rating"} visible={this.state.visible}
                             style={{width: '50vw'}} onHide={this.onHide} maximizable>
                         <Box component="fieldset" width={1 / 8} mb={0} borderColor="transparent">
                             <Typography component="legend">Bathroom Quality</Typography>
-                            <Rating value={this.props.value.r1} readOnly/>
+                            <Rating value={this.props.value.bathroom} readOnly/>
                         </Box>
                         <Box component="fieldset" width={1 / 8} mb={0} borderColor="transparent">
                             <Typography component="legend">Staff Kindness</Typography>
-                            <Rating value={this.props.value.r2} readOnly/>
+                            <Rating value={this.props.value.staff} readOnly/>
                         </Box>
                         <Box component="fieldset" mb={0} width={1 / 8} borderColor="transparent">
                             <Typography component="legend">Cleanliness</Typography>
-                            <Rating value={this.props.value.r3} readOnly/>
+                            <Rating value={this.props.value.clean} readOnly/>
                         </Box>
                         <Box component="fieldset" mb={0} width={1 / 8} borderColor="transparent">
                             <Typography component="legend">Drive-thru quality</Typography>
-                            <Rating value={this.props.value.r4} readOnly/>
+                            <Rating value={this.props.value.drive} readOnly/>
                         </Box>
                         <Box component="fieldset" mb={0} width={1 / 8} borderColor="transparent">
                             <Typography component="legend">Delivery Speed</Typography>
-                            <Rating value={this.props.value.r5} readOnly/>
+                            <Rating value={this.props.value.delivery} readOnly/>
                         </Box>
                         <Box component="fieldset" mb={0} width={1 / 8} borderColor="transparent">
                             <Typography component="legend">Food Quality</Typography>
-                            <Rating value={this.props.value.r6} readOnly/>
+                            <Rating value={this.props.value.food} readOnly/>
                         </Box>
-                        <h4>{this.props.value.desc}</h4>
                     </Dialog>
                     <Button className="p-button-secondary" label="Ratings" icon="pi pi-external-link"
                             onClick={this.onClick}/>

@@ -3,10 +3,12 @@ import GallerySaga from './components/Gallery/saga'
 import AppSaga from './components/App/saga'
 import SignUpSaga from "./components/SignUp/saga";
 import CreateReviewSaga from "./components/CreateReview/saga";
-import CreateRestaurant from "./components/CreateRestaurant/saga";
 import ViewRestaurantSaga from "./components/ViewRestaurant/saga";
 import ViewProfileSaga from "./components/ViewProfile/saga";
 import SearchUsersSaga from "./components/SearchUsers/saga";
+import ViewUserSaga from "./components/ViewUser/saga";
+import RestaurantSaga from "./components/Restaurant/saga";
+import CreateRestaurantSaga from "./components/CreateRestaurant/saga";
 
 export default function* Sagas() {
     yield all([
@@ -14,9 +16,11 @@ export default function* Sagas() {
         GallerySaga(),
         SignUpSaga(),
         ViewRestaurantSaga(),
-        CreateRestaurant(),
+        CreateRestaurantSaga(),
         CreateReviewSaga(),
         ViewProfileSaga(),
-        SearchUsersSaga()
+        SearchUsersSaga(),
+        ViewUserSaga(),
+        RestaurantSaga()
     ])
 }

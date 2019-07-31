@@ -8,6 +8,8 @@ import CreateRestaurantReducer from "./components/CreateRestaurant/reducer";
 import CreateReviewReducer from "./components/CreateReview/reducer";
 import SearchUsersReducer from "./components/SearchUsers/reducer";
 import ViewProfileReducer from "./components/ViewProfile/reducer";
+import ViewUserReducer from "./components/ViewUser/reducer";
+import RestaurantReducer from "./components/Restaurant/reducer";
 
 
 export default combineReducers({
@@ -19,5 +21,7 @@ export default combineReducers({
   createRestaurant: CreateRestaurantReducer,
   createReview: CreateReviewReducer,
   searchUsers: SearchUsersReducer,
-  viewProfile: ViewProfileReducer
+  viewProfile: ViewProfileReducer,
+  viewUser: ViewUserReducer,
+  restaurant: RestaurantReducer
 });

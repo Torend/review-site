@@ -53,13 +53,12 @@ class SearchUsers extends Component {
                     </Toolbar>
                     <ListItem alignItems="flex-start">
                         <Typography>
-                            {this.props.users.map((user, id) => {
+                            {this.props.users.map((user) => {
                                 return <ViewUser
-                                    key={id}
+                                    key={user.id}
                                     name={user.username}
                                     location={user.location}
                                     picture={user.picture}
-                                    reviews={user.reviews}
                                 />;
                             })}
                         </Typography>
@@ -74,7 +73,6 @@ class SearchUsers extends Component {
 const mapStateToProps = (state) => {
     return {
         users: state['searchUsers'].get('users'),
-       //searchValue: state["searchUsers"].get('searchValue')
     }
 };
 
