@@ -146,5 +146,8 @@ export default {
     }),
     restaurant: Map({
         restaurantReviews: List()
+    }),
+    viewUserReviews: Map({
+        reviews: List()
     })
 };

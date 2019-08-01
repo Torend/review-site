@@ -9,6 +9,7 @@ import SearchUsersSaga from "./components/SearchUsers/saga";
 import ViewUserSaga from "./components/ViewUser/saga";
 import RestaurantSaga from "./components/Restaurant/saga";
 import CreateRestaurantSaga from "./components/CreateRestaurant/saga";
+import ViewUserReviewsSaga from "./components/ViewUserReviews/saga";
 
 export default function* Sagas() {
     yield all([
@@ -21,6 +22,7 @@ export default function* Sagas() {
         ViewProfileSaga(),
         SearchUsersSaga(),
         ViewUserSaga(),
-        RestaurantSaga()
+        RestaurantSaga(),
+        ViewUserReviewsSaga()
     ])
 }

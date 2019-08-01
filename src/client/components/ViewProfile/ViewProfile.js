@@ -123,13 +123,13 @@ const mapDispatchToProps = (dispatch) => {
         loadUserEventHandler: () => {
             dispatch({type: 'loadUserEvent', value: (localStorage.getItem('username'))})
         },
-        editProfileEvent: (username, location) => {
-            dispatch({type: 'editProfileEvent', username: (localStorage.getItem('username')),
-                payload:{
-                    username: username,
-                    location: location
-                }})
-        },
+        // editProfileEvent: (username, location) => { //TODO not working
+        //     dispatch({type: 'editProfileEvent', username: (localStorage.getItem('username')),
+        //         payload:{
+        //             username: username,
+        //             location: location
+        //         }})
+        // },
     }
 };
 

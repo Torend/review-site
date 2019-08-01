@@ -73,11 +73,11 @@ module.exports = (app) => {
                 }
             });
     });
-    // TODO: currently it means that reviews are identified by username ant restaurant name. maybe pass to ObjectId,
+    // TODO: currently it means that reviews are identified by username and restaurant name. maybe pass to ObjectId,
     // TODO: this way they're not one-time?
     // TODO: check which content is being changed
     //to edit reviews
-    app.put('api/reviews', function (req, res, next) {
+    app.put('api/reviews/edit', function (req, res, next) {
         console.log('review post');
         //console.log(req);
         AppModel
@@ -114,7 +114,7 @@ module.exports = (app) => {
         //next();
     });
     // to delete reviews
-    app.delete('/api/reviews/:reviewId', function(req, res, next) {
+    app.delete('/api/reviews/:reviewId', function(req, res, next) {// TODO need to check
         console.log(`review delete /${req.params.reviewId}`);
         AppModel
             .findOne({'_id': req.params.reviewId})

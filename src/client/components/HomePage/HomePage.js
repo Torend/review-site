@@ -21,6 +21,7 @@ import ViewRestaurant from "../ViewRestaurant/ViewRestaurant";
 import SearchUsers from "../SearchUsers/SearchUsers";
 import {purple} from "@material-ui/core/colors";
 import ViewProfile from "../ViewProfile/ViewProfile";
+import ViewUserReviews from "../ViewUserReviews/ViewUserReviews";
 // import { mainListItems, secondaryListItems } from './listItems';
 // import Chart from './Chart';
 // import Deposits from './Deposits';
@@ -106,6 +107,9 @@ const useStyles = makeStyles(theme => ({
     fixedHeight: {
         height: 800,
     },
+    Height: {
+        height: 550,
+    },
     palette: {
         primary: purple,
         secondary: {
@@ -124,6 +128,7 @@ export default function Dashboard() {
         setOpen(false);
     };
     const fixedHeightPaper = clsx(classes.paper, classes.fixedHeight);
+    const heightPaper = clsx(classes.paper, classes.Height);
 
     return (
         <div className={classes.root}>
@@ -184,6 +189,13 @@ export default function Dashboard() {
                             <Paper className={fixedHeightPaper}>
                                 Search User
                                 <SearchUsers/>
+                            </Paper>
+                        </Grid>
+                        {/* ViewUserReviews */}
+                        <Grid item xs={12} md={6} lg={9}>
+                            <Paper className={heightPaper}>
+                                Yours Review
+                                <ViewUserReviews/>
                             </Paper>
                         </Grid>
                     </Grid>

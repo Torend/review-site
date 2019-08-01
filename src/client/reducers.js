@@ -10,6 +10,7 @@ import SearchUsersReducer from "./components/SearchUsers/reducer";
 import ViewProfileReducer from "./components/ViewProfile/reducer";
 import ViewUserReducer from "./components/ViewUser/reducer";
 import RestaurantReducer from "./components/Restaurant/reducer";
+import ViewUserReviewsReducer from "./components/ViewUserReviews/reducer";
 
 
 export default combineReducers({
@@ -23,5 +24,6 @@ export default combineReducers({
   searchUsers: SearchUsersReducer,
   viewProfile: ViewProfileReducer,
   viewUser: ViewUserReducer,
-  restaurant: RestaurantReducer
+  restaurant: RestaurantReducer,
+  viewUserReviews: ViewUserReviewsReducer
 });
