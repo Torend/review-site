@@ -67,7 +67,7 @@ module.exports = (app) => {
             });
     });
     //for own profile update
-    app.put('/api/users/:username', function(req, res, next) {
+    app.put('/api/users/update/:username', function(req, res, next) {
         console.log("profile update");
         console.log(req.param);
         AppModel

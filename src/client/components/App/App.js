@@ -8,6 +8,7 @@ import {Button} from 'primereact/button';
 import {Dropdown} from 'primereact/dropdown';
 import SignUp from "../SignUp/SignUp";
 import SignIn from "../SignIn/SignIn";
+//import Dashboard from "../HomePage/HomePage";
 import Restaurant from "../Restaurant/Restaurant";
 import ViewRestaurant from "../ViewRestaurant/ViewRestaurant";
 import {Redirect, Link, Route, Switch} from "react-router-dom";
@@ -25,18 +26,19 @@ class App extends React.Component {
                 {/*<div className="app-header">*/}
                 {/*</div>*/}
 
-                {/*<nav className="navbar navbar">*/}
-                {/*    <ul className="nav">*/}
-                {/*        <li>*/}
-                {/*            <Link to="/SignUp">SignUp</Link>*/}
-                {/*        </li>*/}
-                {/*    </ul>*/}
-                {/*</nav>*/}
-                {/*<Switch>*/}
-                {/*    <Route exact path="/SignIn" component={SignIn}/>*/}
-                {/*    <Route exact path="/SignUp" component={SignUp}/>*/}
-                {/*</Switch>*/}
-                <HomePage/>
+                <nav className="navbar navbar">
+                    <ul className="nav">
+                        <li>
+                            <Link to="/SignUp">SignUp</Link>
+                        </li>
+                    </ul>
+                </nav>
+                <Switch>
+                    <Route exact path="/SignIn" component={SignIn}/>
+                    <Route exact path="/SignUp" component={SignUp}/>
+                    <Route exact path="/Home" component={HomePage}/>
+                </Switch>
+                {/*<HomePage/>*/}
                 {/*<CreateReview*/}
                 {/*    username={this.props.username}*/}
                 {/*    name={this.props.name}*/}

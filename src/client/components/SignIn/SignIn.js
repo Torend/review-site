@@ -72,7 +72,7 @@ class SignIn extends Component {
                             fullWidth
                             variant="contained"
                             color="primary"
-                            onClick={() => this.props.onClickSubmitEventHandler(this.props.username)}
+                            onClick={() => this.props.SignInSubmitEventHandler(this.props.username, this)}
                             className={classes.submit}
                         >
                             Sign In
@@ -97,8 +97,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onClickSubmitEventHandler: (username) => {
-            dispatch(SignInActions.Login(username))
+        SignInSubmitEventHandler: (username, this_ref) => {
+
+            dispatch(SignInActions.Login(username).then(this_ref.props.history.push("/Home")))
         },
         handleUsernameChange: (e) => {
             dispatch({type: 'onUsernameChange', value: e.target.value})

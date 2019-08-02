@@ -127,7 +127,7 @@ module.exports = (app) => {
                         userDoc.save(_handleError);
                         //userDoc.reviews.filter(req.params.reviewId);
                     });
-                    UserSchema.findOne({'name': doc.restaurant}).then(restDoc => {
+                    RestaurantSchema.findOne({'name': doc.restaurant}).then(restDoc => {
                         restDoc.reviews.pull(req.params.reviewId); // check if deleted right element
                         restDoc.save(_handleError);
                         //userDoc.reviews.filter(req.params.reviewId);
