@@ -1,6 +1,7 @@
 import {AppActionsConstants, SignUpActionsConstants} from './constants'
 import { call, put, takeEvery } from 'redux-saga/effects'
 import AppActions from './actions'
+import {history} from "../history-helper"
 
 function* regUser(action){
     console.log('SignUpSaga=', action);
@@ -15,6 +16,7 @@ function* regUser(action){
             });
         const json = yield call([res, 'json']); //retrieve body of response
         yield put({type: "onSuccessReg"});
+        history.push("/signIn");
     } catch (e) {
         console.debug(e.message);
         yield put({type: "onFailureReg", message:(e.message)});

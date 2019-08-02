@@ -106,7 +106,8 @@ class SignUp extends Component {
                             fullWidth
                             variant="contained"
                             color="primary"
-                            onClick={() => this.props.onClickSubmitEventHandler(this.props.username, this.props.location, this.props.picture, this)}
+                            onClick={e => {e.preventDefault();
+                            this.props.onClickSubmitEventHandler(this.props.username, this.props.location, this.props.picture, this)}}
                             className={classes.submit}
                         >
                             Sign Up
@@ -150,7 +151,7 @@ const mapDispatchToProps = (dispatch) => {
         onClickSubmitEventHandler: (username, location, picture, this_ref) => {
             //console.log("fucker");
             //alert("Hello! I am an alert box!!");
-            dispatch(SignUpActions.Register(username, location, picture).then(this_ref.props.history.push("/signIn")));
+            dispatch(SignUpActions.Register(username, location, picture));
             //dispatch({type: 'onSubmit', username: username, location: location, picture: picture})
         },
     }
