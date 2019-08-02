@@ -113,7 +113,8 @@ class CreateRestaurant extends React.Component {
                             fullWidth
                             variant="contained"
                             color="primary"
-                            onClick={this.props.createRestaurantEvent(this.props.name, this.props.location, this.props.description, this.props.picture)}
+                            onClick={e => {e.preventDefault();
+                            this.props.createRestaurantEvent(this.props.name, this.props.location, this.props.description, this.props.picture)}}
                             className={classes.submit}
                         >
                             Create

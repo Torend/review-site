@@ -21,7 +21,7 @@ function* createNewRestaurant(action){
 }
 
 function* CreateRestaurantSaga() {
-    yield takeEvery("aaa", createNewRestaurant);
+    yield takeEvery("createRestaurantEvent", createNewRestaurant);
 }
 
 export default CreateRestaurantSaga;
