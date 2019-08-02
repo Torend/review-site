@@ -2,13 +2,12 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b7245c8-7009-49e5-993d-c962d379df8b" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/src/client/components/ViewProfile/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/client/components/ViewProfile/constants.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/CreateReview/CreateReview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/CreateReview/CreateReview.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/ViewProfile/ViewProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/ViewProfile/ViewProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/ViewProfile/saga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/ViewProfile/saga.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/server/api/users.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/api/users.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/CreateReview/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/CreateReview/reducer.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/EditReview/EditReview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/EditReview/EditReview.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/client/components/ViewUserReviews/saga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/ViewUserReviews/saga.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/server/api/reviews.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/server/api/reviews.js" afterDir="false" />
     </list>
     <ignored path="C:\Users\Toren\WebstormProjects\review-site\dist/" />
     <ignored path="$PROJECT_DIR$/node_modules/" />
@@ -104,7 +103,7 @@
         <entry file="file://$PROJECT_DIR$/src/server/api/reviews.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="204">
-              <caret line="123" column="22" lean-forward="true" selection-start-line="123" selection-start-column="22" selection-end-line="123" selection-end-column="22" />
+              <caret line="114" column="22" lean-forward="true" selection-start-line="114" selection-start-column="22" selection-end-line="114" selection-end-column="22" />
             </state>
           </provider>
         </entry>
@@ -434,11 +433,18 @@
       <option name="project" value="LOCAL" />
       <updated>1564755800135</updated>
     </task>
-    <option name="localTasksCounter" value="8" />
+    <task id="LOCAL-00008" summary="user edit working">
+      <created>1564763345344</created>
+      <option name="number" value="00008" />
+      <option name="presentableId" value="LOCAL-00008" />
+      <option name="project" value="LOCAL" />
+      <updated>1564763345344</updated>
+    </task>
+    <option name="localTasksCounter" value="9" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96276000" />
+    <option name="totallyTimeSpent" value="97721000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -451,7 +457,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1936" height="1176" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="npm" order="1" side_tool="true" />
@@ -459,14 +464,14 @@
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="TypeScript" order="0" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="1" sideWeight="0.49733475" visible="true" weight="0.42761266" />
+      <window_info anchor="bottom" id="Terminal" order="1" sideWeight="0.49733475" weight="0.42761266" />
       <window_info anchor="bottom" id="Event Log" order="2" sideWeight="0.50053304" side_tool="true" weight="0.39980826" />
       <window_info anchor="bottom" id="Version Control" order="3" weight="0.19393283" />
       <window_info anchor="bottom" id="Docker" order="4" show_stripe_button="false" />
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Find" order="6" />
       <window_info anchor="bottom" id="Run" order="7" weight="0.32885906" />
-      <window_info anchor="bottom" id="Debug" order="8" sideWeight="0.49946696" weight="0.39980826" />
+      <window_info active="true" anchor="bottom" id="Debug" order="8" sideWeight="0.49946696" visible="true" weight="0.39980826" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="11" weight="0.32936078" />
@@ -535,7 +540,8 @@
     <MESSAGE value="better routing, fuck defaults" />
     <MESSAGE value="more route fixes, better signup" />
     <MESSAGE value="more shit works" />
-    <option name="LAST_COMMIT_MESSAGE" value="more shit works" />
+    <MESSAGE value="user edit working" />
+    <option name="LAST_COMMIT_MESSAGE" value="user edit working" />
   </component>
   <component name="editorHistoryManager">
     <entry file="file://$PROJECT_DIR$/node_modules/clsx/clsx.d.ts">
@@ -888,7 +894,7 @@
     <entry file="file://$PROJECT_DIR$/src/server/api/reviews.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="204">
-          <caret line="123" column="22" lean-forward="true" selection-start-line="123" selection-start-column="22" selection-end-line="123" selection-end-column="22" />
+          <caret line="114" column="22" lean-forward="true" selection-start-line="114" selection-start-column="22" selection-end-line="114" selection-end-column="22" />
         </state>
       </provider>
     </entry>
