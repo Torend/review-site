@@ -28,8 +28,7 @@ function* deleteReview(action){
                     'Content-Type': 'application/json'
                 },
             });
-        const json = yield call([res, 'json']); //retrieve body of response
-        yield put({type: "onSuccessDeleterReview", value: json});
+        yield put({type: "onSuccessDeleterReview", value: res.status});
     } catch (e) {
         yield put({type: "onFailureDeleteReview", message:(e.message)});
     }

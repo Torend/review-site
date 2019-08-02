@@ -25,7 +25,7 @@ function* createNewReview(action){
 
 
     } catch (e) {
-        alert(e.message);
+        //alert(e.message);
         console.debug(e.message);
         yield put({type: "onFailureCreateReview", message:(e.message)});
     }

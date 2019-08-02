@@ -35,6 +35,7 @@ function* editProfile(action){
                 body: JSON.stringify(action.payload)
             });
         const json = yield call([res, 'json']); //retrieve body of response
+        localStorage.setItem('username', action.payload.to_username);
         yield put({type: "onSuccessUpdateUser", value: json});
     } catch (e) {
         yield put({type: "onFailUpdateUser", message:(e.message)});

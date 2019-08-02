@@ -34,6 +34,10 @@ class ViewProfile extends Component {
     onHide() {
         this.setState({visible: false});
     }
+    shouldComponentUpdate(nextProps, nextState) {
+        return true;
+
+    }
 
     render() {
         return (
