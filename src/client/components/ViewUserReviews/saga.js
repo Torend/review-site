@@ -39,7 +39,7 @@ function* editReview(action){
     console.log('ViewUserReviewsSaga=', action);
     console.log('<----------------->', action);
     try {
-        const res = yield call(fetch, 'api/reviews/'+action.value,
+        const res = yield call(fetch, 'api/reviews/edit/'+action.value,
             {
                 method: 'PUT',
                 headers: {

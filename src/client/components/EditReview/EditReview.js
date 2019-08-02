@@ -133,6 +133,7 @@ const mapDispatchToProps = (dispatch) => {
                 type: "editReviewEvent",
                 value: reviewId,
                 payload: {
+                    reviewId,
                     username,
                     restaurant,
                     bathroom,
