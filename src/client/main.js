@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './components/App/App';
-import { BrowserRouter, Route } from 'react-router-dom'
+import {BrowserRouter, Route, Router, Link, Switch} from 'react-router-dom'
 import { Provider } from 'react-redux';
 import { createStore, applyMiddleware } from 'redux';
 import reducers from './reducers';
@@ -11,6 +11,11 @@ import Sagas from './sagas';
 import 'primereact/resources/themes/nova-light/theme.css';
 import 'primereact/resources/primereact.min.css';
 import 'primeicons/primeicons.css';
+import {history} from './components/history-helper'
+import SignIn from "./components/SignIn/SignIn";
+import SignUp from "./components/SignUp/SignUp";
+import HomePage from "./components/HomePage/HomePage";
+
 
 //create saga middleware
 const sagaMiddleware = createSagaMiddleware();
@@ -35,9 +40,23 @@ sagaMiddleware.run(Sagas);
 
 ReactDOM.render(
         <Provider store={store}>
-            <BrowserRouter>
+            <Router history={history}>
+                <div>
+                    <ul>
+                        <li><Link to="/">Home</Link></li>
+                        <li><Link to="/SignIn">Login</Link></li>
+                    </ul>
+                    {/*<Route exact path="/" component={App} />*/}
+                    {/*<Route path="/login" component={LoginPage} />*/}
+                </div>
                 <App />
-            </BrowserRouter>
+                <Switch>
+                    <Route exact path="/SignIn" component={SignIn}/>
+                    <Route exact path="/SignUp" component={SignUp}/>
+                    <Route exact path="/Home" component={HomePage}/>
+                </Switch>
+            </Router>
+
         </Provider>,
     document.getElementById('app')
 );

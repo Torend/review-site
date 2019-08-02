@@ -33,11 +33,6 @@ class App extends React.Component {
                         </li>
                     </ul>
                 </nav>
-                <Switch>
-                    <Route exact path="/SignIn" component={SignIn}/>
-                    <Route exact path="/SignUp" component={SignUp}/>
-                    <Route exact path="/Home" component={HomePage}/>
-                </Switch>
                 {/*<HomePage/>*/}
                 {/*<CreateReview*/}
                 {/*    username={this.props.username}*/}
