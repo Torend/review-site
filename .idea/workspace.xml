@@ -2,29 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0b7245c8-7009-49e5-993d-c962d379df8b" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/spdy/.travis.yml" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/spdy/.travis.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/spdy/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/spdy/README.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/spdy/lib/spdy.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/spdy/lib/spdy.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/spdy/lib/spdy/agent.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/spdy/lib/spdy/agent.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/spdy/lib/spdy/handle.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/spdy/lib/spdy/handle.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/spdy/lib/spdy/request.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/spdy/lib/spdy/request.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/spdy/lib/spdy/response.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/spdy/lib/spdy/response.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/spdy/lib/spdy/server.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/spdy/lib/spdy/server.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/spdy/lib/spdy/socket.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/spdy/lib/spdy/socket.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/spdy/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/spdy/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/spdy/test/client-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/spdy/test/client-test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/spdy/test/fixtures.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/spdy/test/fixtures.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/node_modules/spdy/test/server-test.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/spdy/test/server-test.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/EditReview/EditReview.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/EditReview/EditReview.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/SignIn/SignIn.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/SignIn/SignIn.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/SignUp/SignUp.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/SignUp/SignUp.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/ViewProfile/ViewProfile.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/ViewProfile/ViewProfile.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/ViewProfile/saga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/ViewProfile/saga.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/ViewUserReviews/reducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/ViewUserReviews/reducer.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/client/components/ViewUserReviews/saga.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/client/components/ViewUserReviews/saga.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/README.md" afterDir="false" />
     </list>
     <ignored path="C:\Users\Toren\WebstormProjects\review-site\dist/" />
     <ignored path="$PROJECT_DIR$/node_modules/" />
@@ -68,11 +46,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/client/components/CreateReview/saga.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="295">
-              <caret line="27" column="10" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
+            <state relative-caret-position="499">
+              <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/README.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="391">
+                <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+              </first_editor>
+              <second_editor />
             </state>
           </provider>
         </entry>
@@ -127,7 +117,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/client/components/Restaurant/reducer.js" />
         <option value="$PROJECT_DIR$/src/client/components/CreateReview/index.js" />
         <option value="$PROJECT_DIR$/src/client/components/CreateReview/constants.js" />
         <option value="$PROJECT_DIR$/src/client/components/CreateReview/acrions.js" />
@@ -178,6 +167,7 @@
         <option value="$PROJECT_DIR$/src/client/components/SignIn/SignIn.js" />
         <option value="$PROJECT_DIR$/src/client/components/SignUp/SignUp.js" />
         <option value="$PROJECT_DIR$/src/client/components/CreateReview/saga.js" />
+        <option value="$PROJECT_DIR$/README.md" />
       </list>
     </option>
   </component>
@@ -424,11 +414,18 @@
       <option name="project" value="LOCAL" />
       <updated>1564765837358</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="added Facebook registration">
+      <created>1564771207000</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1564771207000</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="103612000" />
+    <option name="totallyTimeSpent" value="104810000" />
   </component>
   <component name="TodoView">
     <todo-panel id="selected-file">
@@ -445,7 +442,7 @@
     <layout>
       <window_info id="Favorites" order="0" side_tool="true" />
       <window_info id="npm" order="1" side_tool="true" />
-      <window_info content_ui="combo" id="Project" order="2" visible="true" weight="0.19349681" />
+      <window_info active="true" content_ui="combo" id="Project" order="2" visible="true" weight="0.19349681" />
       <window_info id="Structure" order="3" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Messages" />
       <window_info anchor="bottom" id="TypeScript" order="0" />
@@ -456,7 +453,7 @@
       <window_info anchor="bottom" id="Message" order="5" />
       <window_info anchor="bottom" id="Find" order="6" />
       <window_info anchor="bottom" id="Run" order="7" weight="0.32885906" />
-      <window_info active="true" anchor="bottom" id="Debug" order="8" sideWeight="0.49946696" visible="true" weight="0.39980826" />
+      <window_info anchor="bottom" id="Debug" order="8" sideWeight="0.49946696" visible="true" weight="0.39980826" />
       <window_info anchor="bottom" id="Cvs" order="9" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="10" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="11" weight="0.32936078" />
@@ -528,16 +525,10 @@
     <MESSAGE value="user edit working" />
     <MESSAGE value="Merge branches 'backend' and 'master' of https://github.com/omerporze/review-site into backend&#10;&#10;# Conflicts:&#10;#&#9;src/client/components/CreateReview/CreateReview.js" />
     <MESSAGE value="fixing reviews works" />
-    <option name="LAST_COMMIT_MESSAGE" value="fixing reviews works" />
+    <MESSAGE value="added Facebook registration" />
+    <option name="LAST_COMMIT_MESSAGE" value="added Facebook registration" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/client/components/SearchUsers/reducer.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="6" selection-start-line="2" selection-start-column="6" selection-end-line="2" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/client/components/SearchUsers/actions.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="272">
@@ -930,8 +921,18 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/client/components/CreateReview/saga.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="295">
-          <caret line="27" column="10" selection-start-line="27" selection-start-column="10" selection-end-line="27" selection-end-column="10" />
+        <state relative-caret-position="499">
+          <caret line="39" lean-forward="true" selection-start-line="39" selection-end-line="39" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="391">
+            <caret line="23" lean-forward="true" selection-start-line="23" selection-end-line="23" />
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
