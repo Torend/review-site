@@ -1,6 +1,6 @@
 import {AppActionsConstants, SignInActionsConstants} from './constants'
 import { call, put, takeEvery } from 'redux-saga/effects'
-
+import {history} from "../history-helper"
 
 function* login(action){
     console.log('SignInSaga=', action);
@@ -19,6 +19,7 @@ function* login(action){
         //localStorage.setItem('jwtToken', token);
         //axios.defaults.headers.common['Authorization'] = token;
         yield put({type: "onSuccessSignIn"});
+        history.push("/Home");
     } catch (e) {
         //delete axios.defaults.headers.common['Authorization'];
         console.debug(e.message);
