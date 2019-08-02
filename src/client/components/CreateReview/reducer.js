@@ -6,10 +6,8 @@ const CreateReviewReducer = (state = null, action) => {
     console.log('RECEIVED ACTION:', action);
     switch (action.type) {
         case "sortReviewsByScore":
-            console.log("good");
             return state;
         case "onSuccessCreateReview":
-            console.log("good");
             return state;
         case "onFailureCreateReview":
             console.log(action.message);

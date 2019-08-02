@@ -58,7 +58,6 @@ class CreateReview extends React.Component {
 
 
     render() {
-        localStorage.setItem('username', "usus");
         return (
             <Card className={classes.card}>
                 <Button

@@ -69,7 +69,7 @@ class EditReview extends React.Component {
                     type="submit"
                     variant="contained"
                     color="secondary"
-                    onClick={() => this.props.onClickSubmitEditReview(this.props.username, this.props.restaurant, this.state.r1, this.state.r2, this.state.r3,
+                    onClick={() => this.props.onClickSubmitEditReview(this.props.id, this.props.username, this.props.restaurant, this.state.r1, this.state.r2, this.state.r3,
                         this.state.r4, this.state.r5, this.state.r6, this.state.picture)}
                     className={classes.submit}
                 >
@@ -128,9 +128,10 @@ const mapDispatchToProps = (dispatch) => {
     return { onClickSubmitDeleteReview:(reviewId) =>{
             dispatch({type: 'deleteReviewEvent', value: reviewId})
         },
-        onClickSubmitEditReview: (username, restaurant, bathroom, staff, clean, drive, delivery, food) => {
+        onClickSubmitEditReview: (reviewId, username, restaurant, bathroom, staff, clean, drive, delivery, food) => {
             dispatch({
                 type: "editReviewEvent",
+                value: reviewId,
                 payload: {
                     username,
                     restaurant,
