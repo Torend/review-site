@@ -15,6 +15,7 @@ import Container from '@material-ui/core/Container';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import SignInActions from "../SignIn/actions";
 import {Dropdown} from "primereact/dropdown";
+import FacebookLogin from 'react-facebook-login';
 
 
 export const classes = makeStyles(theme => ({
@@ -44,10 +45,6 @@ export const classes = makeStyles(theme => ({
 
 class SignIn extends Component {
 
-    componentDidMount() {
-        //this.props.loadLocationsEvent();
-    }
-
     render() {
         return (
             <Container component="main" maxWidth="xs">
@@ -76,7 +73,8 @@ class SignIn extends Component {
                             fullWidth
                             variant="contained"
                             color="primary"
-                            onClick={() => this.props.onClickSubmitEventHandler(this.props.username)}
+                            onClick={e => {e.preventDefault();
+                            this.props.SignInSubmitEventHandler(this.props.username, this)}}
                             className={classes.submit}
                         >
                             Sign In
@@ -92,7 +90,6 @@ class SignIn extends Component {
     }
 }
 
-
 const mapStateToProps = (state) => {
     return {
         username: state['signIn'].get('username')
@@ -101,12 +98,8 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
-        onClickSubmitEventHandler: (username) => {
+        SignInSubmitEventHandler: (username, this_ref) => {
             dispatch(SignInActions.Login(username))
-            //dispatch({type: 'onSubmit', username: username, location: location, picture: picture})
-        },
-        loadLocationsEvent:() =>{
-            dispatch({type: 'LoadLocations'})
         },
         handleUsernameChange: (e) => {
             dispatch({type: 'onUsernameChange', value: e.target.value})

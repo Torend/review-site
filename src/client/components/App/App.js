@@ -8,23 +8,23 @@ import {Button} from 'primereact/button';
 import {Dropdown} from 'primereact/dropdown';
 import SignUp from "../SignUp/SignUp";
 import SignIn from "../SignIn/SignIn";
+//import Dashboard from "../HomePage/HomePage";
 import Restaurant from "../Restaurant/Restaurant";
 import ViewRestaurant from "../ViewRestaurant/ViewRestaurant";
-import Review from "../Review/Review";
-import { Redirect, Link, Route, Switch } from "react-router-dom";
+import {Redirect, Link, Route, Switch} from "react-router-dom";
+import CreateReview from "../CreateReview/CreateReview";
+import CardActions from "@material-ui/core/CardActions";
+import SearchUsers from "../SearchUsers/SearchUsers";
+import HomePage from "../HomePage/HomePage";
 
 
 class App extends React.Component {
-    componentDidMount() {
-        this.props.loadTagsEventHandler();
-    }
 
     render() {
-        console.log('tags=', this.props.tags);
         return (
             <div className="app-root">
-                <div className="app-header">
-                </div>
+                {/*<div className="app-header">*/}
+                {/*</div>*/}
 
                 <nav className="navbar navbar">
                     <ul className="nav">
@@ -33,12 +33,11 @@ class App extends React.Component {
                         </li>
                     </ul>
                 </nav>
-                <Switch>
-                    <Route exact path="/SignIn" component={SignIn} />
-                    <Route exact path="/SignUp" component={SignUp} />
-                </Switch>
-                {/*<SignIn/>*/}
-                {/*<ViewRestaurant/>*/}
+                {/*<HomePage/>*/}
+                {/*<CreateReview*/}
+                {/*    username={this.props.username}*/}
+                {/*    name={this.props.name}*/}
+                {/*/>*/}
             </div>
         );
     }
@@ -47,8 +46,7 @@ class App extends React.Component {
 
 const mapStateToProps = (state) => {
     return {
-        tag: state['app'].get('tag'),
-        tags: state['app'].get('tags').toArray()
+
     }
 };
 

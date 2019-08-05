@@ -1,5 +1,5 @@
 import initialState from '../../initialState'
-import {SignInActionsConstants} from "./constants";
+import {SignInActionsConstants} from "./constants"; //TODO: FIX, why no usage?
 import {List} from "immutable";
 
 const SignInReducer = (state = initialState.signIn, action) => {
@@ -10,19 +10,8 @@ const SignInReducer = (state = initialState.signIn, action) => {
             return state.set('username', action.value);
         case "onSubmit":
             state.set('username', action.username);
-            console.log("onSubmit");
             return state;
-        case "onSuccessReg":
-            console.log("onSuccessReg");
-            return state;
-        case "onFailureReg":
-            console.log("onFailureReg");
-            return state;
-        case "valid":
-            console.log(action.value);
-            return state;
-        case "invalid":
-            console.log("invalid");
+        case "onSuccessSignIn":
             return state;
         default:
             return state; // state is lost

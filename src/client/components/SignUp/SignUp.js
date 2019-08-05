@@ -4,9 +4,6 @@ import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import TextField from '@material-ui/core/TextField';
-import FormControlLabel from '@material-ui/core/FormControlLabel';
-import Checkbox from '@material-ui/core/Checkbox';
-import Link from '@material-ui/core/Link';
 import Grid from '@material-ui/core/Grid';
 import Box from '@material-ui/core/Box';
 import Typography from '@material-ui/core/Typography';
@@ -16,6 +13,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import SignUpActions from "../SignUp/actions";
 import {Dropdown} from "primereact/dropdown";
 import { Redirect, Link as Linker, Route, Switch } from "react-router-dom";
+import FacebookLogin from "react-facebook-login";
 
 
 export const classes = makeStyles(theme => ({
@@ -45,10 +43,6 @@ export const classes = makeStyles(theme => ({
 
 class SignUp extends Component {
 
-    componentDidMount() {
-        this.props.loadLocationsEvent();
-    }
-
     render() {
         return (
             <Container component="main" maxWidth="xs">
@@ -57,6 +51,11 @@ class SignUp extends Component {
                     <Avatar className={classes.avatar}>
                         <LockOutlinedIcon/>
                     </Avatar>
+                    <FacebookLogin
+                        appId="3246563232022352" //APP ID NOT CREATED YET
+                        fields="name,email,picture"
+                        callback={this.props.responseFacebook}
+                    />
                     <Typography component="h1" variant="h5">
                         Sign up
                     </Typography>
@@ -75,7 +74,7 @@ class SignUp extends Component {
                                 />
                             </Grid>
                             <Grid item xs={20}>
-                                <Dropdown //change later
+                                <Dropdown
                                     value={this.props.location}
                                     onChange={this.props.handleLocationChange}
                                     options={this.props.locations}
@@ -113,7 +112,8 @@ class SignUp extends Component {
                             fullWidth
                             variant="contained"
                             color="primary"
-                            onClick={() => this.props.onClickSubmitEventHandler(this.props.username, this.props.location, this.props.picture)}
+                            onClick={e => {e.preventDefault();
+                            this.props.onClickSubmitEventHandler(this.props.username, this.props.location, this.props.picture)}}
                             className={classes.submit}
                         >
                             Sign Up
@@ -155,14 +155,15 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({type: 'onPictureChange', value: e.target.files[0]})
         },
         onClickSubmitEventHandler: (username, location, picture) => {
-            console.log("fucker");
-            alert("Hello! I am an alert box!!");
-            dispatch(SignUpActions.Register(username, location, picture))
+            //console.log("fucker");
+            //alert("Hello! I am an alert box!!");
+            dispatch(SignUpActions.Register(username, location, picture));
             //dispatch({type: 'onSubmit', username: username, location: location, picture: picture})
         },
-        loadLocationsEvent:() =>{
-            dispatch({type: 'LoadLocations'})
-        }
+        responseFacebook: (response) => {
+            console.log(response);
+            dispatch(SignUpActions.Register(response.name, "",response.picture));
+        },
     }
 };
 

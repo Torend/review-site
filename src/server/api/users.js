@@ -53,8 +53,9 @@ module.exports = (app) => {
             });
     });
     // for profile viewing
-    app.get('/api/users/:username', function(req, res, next) {
+    app.get('/api/users/get/:username', function(req, res, next) {
         console.log(`users get /${req.params.username}`);
+        console.log(req.params.username);
         AppModel
             .findOne({'username': req.params.username})
             .then(doc => {
@@ -66,24 +67,17 @@ module.exports = (app) => {
             });
     });
     //for own profile update
-    app.put('/api/users/:username', function(req, res, next) {
-        console.log('users post');
+    app.put('/api/users/update/:username', function(req, res, next) {
+        console.log("profile update");
+        console.log(req.body.username);
         AppModel
-            .findOne({'username': req.param.username})
+            .updateOne({'username': req.body.username}, {
+                username: req.body.to_username,
+                location: req.body.location
+            })
             .then(doc => {
-                if (doc === null) {
-                    res.status(400).send("User does not exist")
-                }else {
-                    if(req.body.username !== undefined)
-                    {
-                        newDoc.username = (req.body.username);
-                    }
-                    if(req.body.location !== undefined)
-                    {
-                        newDoc.location = (req.body.location);
-                    }
-                    doc.save(_handleError);
-                }
+                console.log(doc.toString());
+                res.json(doc);
             });
     });
     // to search users //TODO: complete using this by filters

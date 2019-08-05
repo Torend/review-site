@@ -1,13 +1,16 @@
 import initialState from '../../initialState'
 
-const RestaurantReducer = (state , action) => {
+const RestaurantReducer = (state = initialState.restaurant, action) => {
     console.log('RestaurantReducerState=', state);
     console.log('RECEIVED ACTION:', action);
     switch (action.type) {
-        case "sortReviewsByScore":
-            console.log("good");
+        case "onSuccessLoadRestaurantReviews":
+            let lst =  state.get("restaurantReviews").push(action.value);
+            state = state.set("restaurantReviews", lst);
+            return state;
+        default:
+            return state; // state is lost
     }
-    return state;
 };
 
 export default RestaurantReducer
