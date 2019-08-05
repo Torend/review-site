@@ -1,97 +1,17 @@
 const {List, Map} = require('immutable');
 
-const review1 = {
-    name: "dani",
-    date: "12.3.2019",
-    restaurant: "bla bla bla bla bla bla",
-    average: 4,
-    r1: 4,
-    r2: 4,
-    r3: 4,
-    r4: 5,
-    r5: 5,
-    r6: 4,
-};
-
-const review2 = {
-    name: "alon",
-    date: "12.3.2019",
-    restaurant: "kkkkkkkkkkkkk",
-    average: 2,
-    r1: 2,
-    r2: 2,
-    r3: 4,
-    r4: 2,
-    r5: 2,
-    r6: 1,
-};
-
-const review3 = {
-    name: "kaki",
-        date: "12.3.2019",
-        restaurant: "bhhhhhhhhhhhhhhhh",
-        average: 3,
-        r1: 4,
-        r2: 2,
-        r3: 4,
-        r4: 5,
-        r5: 3,
-        r6: 4,
-};
-
-const users = [{
-    name: "kakai",
-    location: 'Tel Aviv',
-    picture: null,
-    reviews: [review3, review1, review2, review2]
-},{
-    name: "aaaaa",
-    location: 'Tel Aviv',
-    picture: null,
-    reviews: [review1, review2]
-},{
-    name: "bbbbbb",
-    location: 'BeerSheva',
-    picture: null,
-    reviews: [review3]
-}];
-
-const data = [{
-    name: "Mcdonalds",
-    location: "Tel Aviv",
-    description: "McDonald's is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald",
-    picture: null,
-    reviews: [review3, review1, review2, review2, review1]
-}, {
-    name: "Mcdonalds",
-    location: "BeerSheva",
-    description: "McDonald's is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald",
-    picture: null,
-    reviews: [review2, review1, review2]
-}, {
-    name: "Mcdonalds",
-    location: "RamtGan",
-    description: "McDonald's is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald",
-    picture: null,
-    reviews: [review1]
-}, {
-    name: "aaaa",
-    location: "RamtGan",
-    description: "McDonald's is an American fast food company, founded in 1940 as a restaurant operated by Richard and Maurice McDonald",
-    picture: null,
-    reviews: [review1]
-}];
 
 const cities = [
     {label: 'none', value: ''},
-    {label: 'New York', value: 'New York'},
-    {label: 'Rome', value: 'Rome'},
-    {label: 'London', value: 'London'},
-    {label: 'Istanbul', value: 'Istanbul'},
-    {label: 'Paris', value: 'Paris'},
-    {label: 'Tel Aviv', value: 'Tel Aviv'},
-    {label: 'BeerSheva', value: 'BeerSheva'},
-    {label: 'RamtGan', value: 'RamtGan'}];
+    {label: 'New York', value: 'New York', coordinates: [40.785091, -73.968285]},
+    {label: 'Rome', value: 'Rome', coordinates: [41.890251, 12.492373]},
+    {label: 'London', value: 'London', coordinates: [51.509865, -0.118092]},
+    {label: 'Istanbul', value: 'Istanbul', coordinates: [ 41.015137, 28.979530]},
+    {label: 'Paris', value: 'Paris', coordinates: [48.864716, 2.349014]},
+    {label: 'Tel Aviv', value: 'Tel Aviv', coordinates: [32.109333, 34.855499]},
+    {label: 'BeerSheva', value: 'BeerSheva', coordinates: [31.25181, 34.7913]},
+    {label: 'RamtGan', value: 'RamtGan', coordinates: [32.08227, 34.81065]
+    }];
 
 
 export default {

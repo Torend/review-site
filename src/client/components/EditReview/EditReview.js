@@ -43,6 +43,7 @@ const classes = makeStyles(theme => ({
 
 
 class EditReview extends React.Component {
+    shouldComponentUpdate = (nextProps, nextState) => true;
     constructor(props) {
         super(props);
         this.state = {
@@ -69,7 +70,7 @@ class EditReview extends React.Component {
                     type="submit"
                     variant="contained"
                     color="secondary"
-                    onClick={() => this.props.onClickSubmitEditReview(this.props.id, this.props.username, this.props.restaurant, this.state.r1, this.state.r2, this.state.r3,
+                    onClick={() => this.props.onClickSubmitEditReview(this, this.props.id, this.props.username, this.props.restaurant, this.state.r1, this.state.r2, this.state.r3,
                         this.state.r4, this.state.r5, this.state.r6, this.state.picture)}
                     className={classes.submit}
                 >
@@ -79,7 +80,7 @@ class EditReview extends React.Component {
                     type="submit"
                     variant="contained"
                     color="secondary"
-                    onClick={() => this.props.onClickSubmitDeleteReview(this.props.id)}
+                    onClick={() => this.props.onClickSubmitDeleteReview(this, this.props.id)}
                     className={classes.submit}
                 >
                     Delete
@@ -124,15 +125,18 @@ const mapStateToProps = (state) => {
     return {}
 };
 
+
 const mapDispatchToProps = (dispatch) => {
-    return { onClickSubmitDeleteReview:(reviewId) =>{
-            dispatch({type: 'deleteReviewEvent', value: reviewId})
+    return { onClickSubmitDeleteReview:(obj, reviewId) =>{
+            dispatch({obg: obj, type: 'deleteReviewEvent', value: reviewId})
         },
-        onClickSubmitEditReview: (reviewId, username, restaurant, bathroom, staff, clean, drive, delivery, food) => {
+        onClickSubmitEditReview: (obj, reviewId, username, restaurant, bathroom, staff, clean, drive, delivery, food) => {
             dispatch({
+                obj: obj,
                 type: "editReviewEvent",
                 value: reviewId,
                 payload: {
+                    reviewId,
                     username,
                     restaurant,
                     bathroom,

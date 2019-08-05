@@ -13,6 +13,7 @@ import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import SignUpActions from "../SignUp/actions";
 import {Dropdown} from "primereact/dropdown";
 import { Redirect, Link as Linker, Route, Switch } from "react-router-dom";
+import FacebookLogin from "react-facebook-login";
 
 
 export const classes = makeStyles(theme => ({
@@ -50,6 +51,11 @@ class SignUp extends Component {
                     <Avatar className={classes.avatar}>
                         <LockOutlinedIcon/>
                     </Avatar>
+                    <FacebookLogin
+                        appId="3246563232022352" //APP ID NOT CREATED YET
+                        fields="name,email,picture"
+                        callback={this.props.responseFacebook}
+                    />
                     <Typography component="h1" variant="h5">
                         Sign up
                     </Typography>
@@ -107,7 +113,7 @@ class SignUp extends Component {
                             variant="contained"
                             color="primary"
                             onClick={e => {e.preventDefault();
-                            this.props.onClickSubmitEventHandler(this.props.username, this.props.location, this.props.picture, this)}}
+                            this.props.onClickSubmitEventHandler(this.props.username, this.props.location, this.props.picture)}}
                             className={classes.submit}
                         >
                             Sign Up
@@ -148,11 +154,15 @@ const mapDispatchToProps = (dispatch) => {
             console.log(e.target.files[0]);
             dispatch({type: 'onPictureChange', value: e.target.files[0]})
         },
-        onClickSubmitEventHandler: (username, location, picture, this_ref) => {
+        onClickSubmitEventHandler: (username, location, picture) => {
             //console.log("fucker");
             //alert("Hello! I am an alert box!!");
             dispatch(SignUpActions.Register(username, location, picture));
             //dispatch({type: 'onSubmit', username: username, location: location, picture: picture})
+        },
+        responseFacebook: (response) => {
+            console.log(response);
+            dispatch(SignUpActions.Register(response.name, "",response.picture));
         },
     }
 };

@@ -12,6 +12,7 @@ import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import {Dropdown} from "primereact/dropdown";
+import ViewProfileActions from "../ViewProfile/actions";
 
 class ViewProfile extends Component {
     constructor() {
@@ -32,6 +33,10 @@ class ViewProfile extends Component {
 
     onHide() {
         this.setState({visible: false});
+    }
+    shouldComponentUpdate(nextProps, nextState) {
+        return true;
+
     }
 
     render() {
@@ -87,8 +92,9 @@ class ViewProfile extends Component {
                                                     />
                                                 </Grid>
                                             </Grid>
-                                            {/*<Button label="submit" icon="pi pi-pencil"*/}
-                                            {/*        onClick={this.props.editProfileEvent(this.props.username, this.props.location)}/>*/}
+                                            <Button label="submit" icon="pi pi-pencil"
+                                            onClick={e => {e.preventDefault();
+                                            this.props.editProfileEvent(localStorage.getItem('username'), this.props.username, this.props.location)}}/>
                                         </form>
                                     </div>
                                 </Container>
@@ -114,6 +120,9 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+        editProfileEvent: (username, to_username, location) => {
+            dispatch(ViewProfileActions.EditProfile(localStorage.getItem('username'), to_username, location))
+        },
         handleLocationChange: (e) => {
             dispatch({type: 'onLocationChange', value: e.target.value})
         },

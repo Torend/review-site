@@ -28,8 +28,7 @@ function* deleteReview(action){
                     'Content-Type': 'application/json'
                 },
             });
-        const json = yield call([res, 'json']); //retrieve body of response
-        yield put({type: "onSuccessDeleterReview", value: json});
+        yield put({type: "onSuccessDeleterReview", value: res.status});
     } catch (e) {
         yield put({type: "onFailureDeleteReview", message:(e.message)});
     }
@@ -39,13 +38,13 @@ function* editReview(action){
     console.log('ViewUserReviewsSaga=', action);
     console.log('<----------------->', action);
     try {
-        const res = yield call(fetch, 'api/reviews/'+action.value,
-            {
-                method: 'PUT',
+        const res = yield call(fetch, 'api/reviews/edit/'+action.value,
+        {
+            method: 'PUT',
                 headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(action.payload)
+            'Content-Type': 'application/json'
+        },
+            body: JSON.stringify(action.payload)
             });
         const json = yield call([res, 'json']); //retrieve body of response
         yield put({type: "onSuccessEditReview", value: json});

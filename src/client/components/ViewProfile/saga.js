@@ -1,5 +1,5 @@
 import { call, put, takeEvery } from 'redux-saga/effects'
-
+import {ViewProfileActionsConstants} from './constants'
 
 function* loadUser(action){
     console.log('ViewProfileSaga=', action);
@@ -21,8 +21,9 @@ function* loadUser(action){
 
 function* editProfile(action){
     console.log('ViewProfileSaga=', action);
+
     try {
-        const res = yield call(fetch, '/api/users/'+ action.username,
+        const res = yield call(fetch, '/api/users/update/'+ action.username,
             {
                 method: 'PUT',
                 headers: {
@@ -34,6 +35,7 @@ function* editProfile(action){
                 body: JSON.stringify(action.payload)
             });
         const json = yield call([res, 'json']); //retrieve body of response
+        localStorage.setItem('username', action.payload.to_username);
         yield put({type: "onSuccessUpdateUser", value: json});
     } catch (e) {
         yield put({type: "onFailUpdateUser", message:(e.message)});
@@ -42,8 +44,8 @@ function* editProfile(action){
 
 function* ViewProfileSaga() {
 
-    yield takeEvery("loadUserEvent", loadUser);
-    yield takeEvery("editProfileEvent", editProfile)
+    yield takeEvery(ViewProfileActionsConstants.loadUserEvent, loadUser);
+    yield takeEvery(ViewProfileActionsConstants.editProfileEvent, editProfile)
 }
 
 export default ViewProfileSaga;

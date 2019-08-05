@@ -34,6 +34,15 @@ const ViewRestaurantReducer = (state = initialState.viewRestaurant, action) => {
             return state = state.set("restaurants", state.get("backup").filter((restaurant) => {
                 return restaurant.name.substring(0, len) === action.value;
             }));
+        case "sortByLocation":
+            if (state.get("sort") !== "sortByLocation") {
+                let currLocation = localStorage.getItem('location');
+                let restaurantsByScore = state.get("restaurants").sort(function (a, b) {
+                    return (distance(a.location, currLocation)) - (distance(b.location, currLocation))
+                });
+                state = state.set("sort", "sortByLocation");
+                return state = state.set("restaurants", restaurantsByScore);
+            } else return state = state.set("restaurants", state.get("restaurants").reverse());
         //review case
         // case "sortReviewByDate":
         // if (state.get("sort") !== "sortByDate") {
@@ -55,10 +64,30 @@ const ViewRestaurantReducer = (state = initialState.viewRestaurant, action) => {
 
 
 function averageReviews(restaurant) {
+    console.log(initialState.restaurant.get("restaurantReviews"));
     let numOfReview = restaurant.reviews.length;
     return (restaurant.reviews.map((rev) => {
         return Review.average
     }).reduce((a, b) => a + b, 0)) / numOfReview;
+}
+
+function distance(location, currLocation) {
+    const cities = new Map([
+        ["New York", [40.785091, -73.968285]],
+        ["Rome", [41.890251, 12.492373]],
+        ["London", [51.509865, -0.118092]],
+        ["Istanbul", [ 41.015137, 28.979530]],
+        ["Paris", [48.864716, 2.349014]],
+        ["Tel Aviv", [32.109333, 34.855499]],
+        ["BeerSheva", [31.25181, 34.7913]],
+        ["RamtGan", [32.08227, 34.81065]]
+    ]);
+
+    let city1 = cities.get(location);
+    let city2 = cities.get(currLocation);
+    let a = city1[0] - city2[0];
+    let b = city1[1] - city2[1];
+    return Math.sqrt( a*a + b*b );
 }
 
 export default ViewRestaurantReducer

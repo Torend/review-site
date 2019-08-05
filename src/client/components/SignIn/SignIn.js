@@ -15,6 +15,7 @@ import Container from '@material-ui/core/Container';
 import LockOutlinedIcon from '@material-ui/icons/LockOutlined';
 import SignInActions from "../SignIn/actions";
 import {Dropdown} from "primereact/dropdown";
+import FacebookLogin from 'react-facebook-login';
 
 
 export const classes = makeStyles(theme => ({
@@ -88,7 +89,6 @@ class SignIn extends Component {
         );
     }
 }
-
 
 const mapStateToProps = (state) => {
     return {

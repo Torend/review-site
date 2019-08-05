@@ -4,6 +4,7 @@ let Schema = mongoose.Schema;
 let restaurantsSchema = new Schema({
     name: String,
     location: String,
+    description: String,
     reviews: [Schema.Types.ObjectId]
 
 });
