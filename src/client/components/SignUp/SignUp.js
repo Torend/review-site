@@ -153,9 +153,16 @@ const mapDispatchToProps = (dispatch) => {
         handlePictureChange: (e) => {
             console.log(e.target.files[0]);
             var fileReader = new FileReader();
+            var pfile = e.target.files[0];
+            //debugger;
+            fileReader.onloadend = () => {
+                this.setState({
+                    file: pfile,
+                    imagePreviewUrl: fileReader.result
+                });
+            };
+            fileReader.readAsDataURL(pfile);
             debugger;
-            fileReader.readAsDataURL(e.target.files[0]);
-
             dispatch({type: 'onPictureChange', value: fileReader.result})
         },
         onClickSubmitEventHandler: (username, location, picture) => {

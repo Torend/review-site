@@ -6,7 +6,7 @@ const ViewProfileReducer = (state = initialState.viewProfile, action) => {
     console.log('RECEIVED ACTION:', action);
     switch (action.type) {
         case "onSuccessLoadUser":
-            state = state.set("username",action.value.username);
+            state = state.set("username",action.value.username+" ");
             state = state.set("location",action.value.location);
             localStorage.setItem("location", action.value.location);
             return state = state.set("picture",action.value.img);
