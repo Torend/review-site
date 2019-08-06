@@ -152,7 +152,11 @@ const mapDispatchToProps = (dispatch) => {
         },
         handlePictureChange: (e) => {
             console.log(e.target.files[0]);
-            dispatch({type: 'onPictureChange', value: e.target.files[0]})
+            var fileReader = new FileReader();
+            debugger;
+            fileReader.readAsDataURL(e.target.files[0]);
+
+            dispatch({type: 'onPictureChange', value: fileReader.result})
         },
         onClickSubmitEventHandler: (username, location, picture) => {
             //console.log("fucker");
