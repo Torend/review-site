@@ -159,8 +159,6 @@ const mapDispatchToProps = (dispatch) => {
             dispatch({type: 'onPictureChange', value: fileReader.result})
         },
         onClickSubmitEventHandler: (username, location, picture) => {
-            //console.log("fucker");
-            //alert("Hello! I am an alert box!!");
             dispatch(SignUpActions.Register(username, location, picture));
             //dispatch({type: 'onSubmit', username: username, location: location, picture: picture})
         },

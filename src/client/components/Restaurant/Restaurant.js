@@ -94,7 +94,6 @@ class Restaurant extends React.Component {
                         <Button label="By Date" icon="pi pi-sort" className="p-button-success"
                             //onClick={this.props.sortReviewsByDate(this.props.name)}
                         />
-                        <Button label="Add" icon="pi pi-pencil" onClick={this.onHide}/>
                     </div>
                 </Toolbar>
             </div>

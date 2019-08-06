@@ -43,7 +43,7 @@ class ViewRestaurant extends React.Component {
                         <div className="p-toolbar-group-left">
                             <Button label="By Score" icon="pi pi-sort" style={{marginRight: '.25em'}}
                                     onClick={this.props.sortByScore}/>
-                            <Button label="By Location" icon="pi pi-sort" className="p-button-warning"/>
+                            <Button label="By Location" icon="pi pi-sort" className="p-button-warning" onClick={this.props.sortByLocation}/>
                             <Dialog visible={this.state.visible}
                                     style={{width: '60vw'}} onHide={this.onHide} maximizable>
                                 <CreateRestaurant/>
@@ -99,9 +99,9 @@ const mapDispatchToProps = (dispatch) => {
         loadRestaurantEvent: () => {
             dispatch({type: "loadRestaurantEvent"});
         },
-        // LoadLocations: () => {
-        //     dispatch({type: "LoadLocationsEvent"});
-        // },
+        sortByLocation: () => {
+            dispatch({type: "sortByLocation"});
+        },
         sortByScore: () => {
             dispatch({type: "sortByScore"});
         },
