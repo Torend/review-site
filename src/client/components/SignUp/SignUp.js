@@ -162,7 +162,7 @@ const mapDispatchToProps = (dispatch) => {
                 });
             };
             fileReader.readAsDataURL(pfile);
-            debugger;
+            //debugger;
             dispatch({type: 'onPictureChange', value: fileReader.result})
         },
         onClickSubmitEventHandler: (username, location, picture) => {
