@@ -9,7 +9,7 @@ To start the server:
 
 This project is based on [this](https://github.com/wix-incubator/flickr-gallery-exam) code.
 
-Core Libraries:
+## Core Libraries:
 Babel
 Webpack - Hot reloading for front-end
 React.js - React, React Router
